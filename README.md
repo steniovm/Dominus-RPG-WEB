@@ -2,7 +2,7 @@
 
 <h1>Plataforma para Jogar, Criar e Publicar cenários para o RPG sem mestre Dominus</h1>
 
-<p>Para Jogar inicio o arquivo index.html</p>
+<p>Para Jogar abra o arquivo index.html</p>
 <br>
 <p>É necessário ter cenários em formato JSOM para jogar, voce pode criar seus próprios cenários (utilizando o gerador de cenário scenariocreate.html), ou baixar os cenários publicos on-line na <a href="https://drive.google.com/drive/folders/1yCx5s9EAQGN5evy2Ff7jkSUi_O8VI71A?usp=sharing">nuvem da aplicação</a>.
 <br>
