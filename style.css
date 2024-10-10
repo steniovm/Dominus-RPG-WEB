@@ -1,0 +1,373 @@
+@font-face {
+    font-family: Grobold;
+    src: url("./fonts/GROBOLD.ttf") format("truetype");
+}
+
+body {
+    background-color: #9FCFBF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 4px 1px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    width: 100%;
+    background-color: #ffffff55;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+h2, h3 {
+    margin: 0;
+    text-align: center;
+}
+
+header img{
+    height: 100%;
+    max-width: 50vw;
+}
+#aboutd{
+    height: 100%;
+    max-width: 40vw;
+}
+#aboutcc{
+    height: 100%;
+    max-width: 15vw;
+}
+
+textarea {
+    background-color: #ffffffcc;
+    width: 80%;
+    border-radius: 10px;
+    resize: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 96%;
+    min-height: 20vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+section>div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+input,
+button,
+select {
+    min-width: 100px;
+    border-radius: 10px;
+    background-color: #ffffffcc;
+    text-align: center;
+    width: fit-content;
+    cursor: pointer;
+}
+select{
+    min-width: 150px;
+}
+
+input[type=text],
+input[type=file] {
+    width: 85%;
+}
+button a {
+    color: unset;
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+.modal{
+    /*display: none;*/ /* invisivel por padrão */
+    display: block; /*apagar depois de pronto*/
+    position: fixed;
+    z-index: 1; /* inicialmente acima */
+    left: auto;
+    top: 10px;
+    overflow: auto; /*ativa rolagem quando necessario */
+    border: 1px solid;
+    border-radius: 5px;
+    width: min-content;
+    min-width: 65vw;
+    background-color: #cf9fabe6;
+    max-height: 90vh;
+    padding: 0.5em 1em;
+}
+.showmodal{
+    display: block;
+}
+.modal-header {
+    background-color: var(--blue-bg);
+    color: black;
+    display: flex;
+    justify-content: flex-end;
+    height: 2em;
+}
+#closemodalbt, #closeaboutbt, #closeonlinebt{
+    min-width: 0;
+    color: black;
+    float: right;
+    font-size: 2em;
+    font-family: Grobold, "Bebas Neue", cursive;
+    cursor: pointer;
+}
+#about{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-size: large;
+    font-weight: bold;
+}
+.modaldiv{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+.close {
+    color: black;
+    float: right;
+    font-size: 2em;
+    -webkit-text-stroke: 0 #000;
+}
+fieldset{
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0;
+    width: 95%;
+}
+
+#history textarea {
+    width: 99%;
+    height: auto;
+    resize: none;
+}
+#historytext {
+    max-height: 25vh;
+    overflow: auto;
+}
+#historytext p {
+    display: inline;
+}
+
+.stepdiv {
+    border: 2px groove #c0c0c0;
+    border-radius: 5px;
+}
+
+#filejsonbt {
+    border-radius: 0;
+}
+
+.hiddendiv {
+    display: none !important;
+    background-color: red;/*teste*/
+}
+
+.btdice {
+    min-height: 0;
+    min-width: 0;
+    padding: 0;
+    width: 35px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.twodices{
+    width: 65px;
+}
+
+#gameplay {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: normal;
+}
+
+#gameplay>div, .desav {
+    width: 20%;
+    min-width: 160px;
+    max-width: 300px;
+    border: 2px groove #c0c0c0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 0 0 5px;
+}
+.desav{
+    width: 95%;
+    min-width: unset;
+    max-width: unset;
+}
+
+table {
+    background-color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+}
+
+td {
+    margin: auto;
+    background-color: #ffffff33;
+    font-weight: normal;
+}
+
+.tidea, .bidea {
+    font-size: x-small;
+    font-weight: bold;
+    min-width: unset;
+}
+
+#cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+}
+
+#cover > img {
+    max-width: 100%;
+    max-height: 40vh;
+}
+
+.intext {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.intebt {
+    height: 2em;
+    width: 2em;
+    align-self: center;
+    background-image: url("./imgs/microphone-off.svg");
+    background-size: cover;
+    cursor: pointer;
+}
+.intebtpress{
+    background-image: url("./imgs/microphone-on.svg");
+}
+
+.inte{
+    width: 100%;
+}
+
+.imgdice, svg {
+    width: 32px;
+    height: 32px;
+}
+footer {
+    min-width: 90%;
+    background-color: #b4c7c1cc;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    flex-wrap:wrap-reverse;
+    line-height: 1.5em;
+}
+
+.divinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    max-width: 360px;
+}
+
+#sitelinks {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+th {
+    background-color: #a9a9a9;
+    font-weight: bold;
+}
+
+nav * {
+    margin: 0;
+    padding: 0;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    border: 2px groove #c0c0c0;
+    border-radius: 5px;
+    float: left;
+}
+
+.menu li {
+    position: relative;
+    float: left;
+}
+
+.menu li a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+}
+
+.menu li a:hover {
+    background: #333;
+    color: #fff;
+    text-shadow: 0px 0px 5px #fff;
+}
+
+.menu li ul {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background-color: #b7e9d8;
+    display: none;
+    z-index: 1;
+}
+
+.menu li:hover ul,
+.menu li.over ul {
+    display: block;
+}
+
+.menu li ul li {
+    border: 2px groove #c0c0c0;
+    display: block;
+    width: 150px;
+}

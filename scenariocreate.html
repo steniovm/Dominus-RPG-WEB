@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="Dominus RPG Solo" />
+    <meta property="og:description" content='Criador de cenário e jogue RPG Solo pelo sistema brasileiro Dominus' />
+    <meta property="og:locale" content="pt-br" />
+    <link rel="shortcut icon" href="imgs/favicon.ico">
+    <meta property="description" content='Criador de cenário e jogue RPG Solo pelo sistema brasileiro Dominus' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Gerador de Cénario - Dominus - RPG Solo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="creatstyle.css" />
+</head>
+
+<body id="bodyelement">
+    <header>
+        <a href="https://arquivorpg.com.br/dominus/"><img src="./imgs/logo-dominus.png"></a>
+        <h1>Gerador de Cénario</h1>
+    </header>
+    <nav>
+        <ul class="menu">
+            <li><a href="./index.html">Jogar</a></li>
+            <li><a href="#">Abrir</a>
+                <ul>
+                    <li><a id="opemfilelocal" href="#">Abrir arquivo local</a></li>
+                    <li><a id="opemonline" href="#">Abrir arquivo online</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Salvar</a>
+                <ul>
+                    <li><a id="savelocal" href="#">Salvar local</a></li>
+                    <li><a href="#">Salvar e públicar</a></li>
+                </ul>
+            </li>
+            <li><a id="tohtml" href="#">Exportar(html)</a></li>
+            <li><a id="bthelpbox" href="#">Instruções</a></li>
+            <li><a id="btshowabout" href="#">Sobre</a></li>
+        </ul>
+    </nav>
+    <fieldset id="helpbox" hidden>
+        <h3>Instruções</h3>
+        <ol>
+            <li>Preencha os campos de informações gerais sobre o cenário</li>
+            <ul>
+                <li>Os campos "Titulo do Cenário", "Author" e "Ambientação" são obrigatórios.</li>
+                <li>Caso esteja transcrevendo o cenário de um autor desconhecido, mantenha o campo "Autor" como
+                    "Anônimo".</li>
+                <li>"Ambientação" corresponde a um pequeno páragrafo que descreve o cenário de forma bem sussinta.</li>
+                <li>"Palavras-chave" insira termos (tags) que podem ser usados para classificar e buscar o cenário,
+                    exemplos: "futurista", "mediaeval", "mortos-vivos", "terror", "infantil", "animais falantes", "disco
+                    voador", etc... Insira quantas achar conveniente, cada termo em um campo. Click no botão "mais tags"
+                    se necessário, </li>
+                <li>"Cor de fundo" e "Cor de texto" serão usadas tanto para visualização em tela quanto para impressão,
+                    sugiro escolher com cuidado para ter bom contraste entre o fundo e o texto além de combinar com a
+                    ambientação do cenário.</li>
+                <li>"Imagem da Capa" pode ser a url de uma imagem publica na internet ou o upload de um aquivo. Cuidado,
+                    não use imagens protegidas por direitos outorais.
+                </li>
+                <li>Em caso de upload, o tamanho do arquivo está limitado a 1mb porque a imagem será encapsulada no
+                    arquivo do cenário.</li>
+                <li>Em "Arquivo texto" insira a url do arquivo original do cenário. Existem vários cenário Dominus
+                    disponíveis na internet, se for transcrever um deles faça a devida referencia.</li>
+            </ul>
+            <li>Insira seis "Arquétipos" possiveis para os personagens dos jogadores, tais como: "Mago(a) vermelho(a).",
+                "Bárbaro musculoso", "Acrobata", "Caipira, "Cientista", etc...</li>
+            <li>Insira as informações iniciais (seis de cada) para se criar uma trama neste cenário</li>
+            <ul>
+                <li>Algo aconteceu...: Insira os eventos que podem ter desencadeado a história, como "A magia do mundo
+                    está sumindo", "Acabou a água no tororó", "Um sinal de socorro é ouvido no espaço", etc...</li>
+                <li>Você precisa...: Insira quais podem ser os objetivos, ao menos iniciais, do personagem na história,
+                    como "Ir até uma caverna misteriosa", "Encontrar o Doutor Peru", "Impedir que isso venha a público",
+                    etc...</li>
+                <li>Senão...: Insira as potênciais consequências de falha da missão do personagem, como "o vilarejo será
+                    destruído", "Vai dormir no chiqueiro", "vai ser exilado!", etc...</li>
+            </ul>
+            <li>Insira as informações para montar as possiveis cenas das histórias que se passam neste cenário.</li>
+            <ul>
+                <li>Lugares onde possam se passar as cenas, como: "Taverna", "Estação espacial", "Fazenda", etc...</li>
+                <li>Personagens que podem aparecer durante as cenas, como: "Menina perdida", "Sapo cururu", "Ciborge
+                    defeituoso", etc...</li>
+                <li>Eventos que irão ocorrer durante a cena, como: "Soldados tentam te prender", "Show da Banda", "O
+                    computador pifa", etc...</li>
+            </ul>
+            <li>Crie um "Banco de Idéias" para quando o jogador precisar de ajuda para fazer a história andar. insira 6
+                ideias de cada catégoria (Assunto, Ação, Coisa e Qualidade)</li>
+            <li>Insira as "Regras X" o cenário terá, essas são regras especificas deste cenário que complementam as
+                regras gerais do Dominus. Você pode inserir quantas regras forem necessárias utilizando o botão "Mais
+                regras"</li>
+            <li>Insira "Outras informações" que forem necessárias, como, nomes de colaboradores, referências
+                bibliográficas, dedicatórias, etc.</li>
+        </ol>
+    </fieldset>
+    <main>
+        <form id="formdata"
+            action="https://script.google.com/macros/s/AKfycby0ubBEDPyGRU-ubClB6Up1x_g06Xmgjf6JLYVLxPwr6AehZPy3Dh29Z15qw-Tn9r48-Q/exec"
+            method="post">
+            <h3>informações Gerais</h3>
+            <label title="Nome que o cenário (e seu arquivo) terá">Titulo do Cenário</label>
+            <input type="text" name="Name" title="Nome que o cenário (e seu arquivo) terá" required>
+            <label title="O nome de quem elaborou o cenário (seu o de quem voce está copiando)">Autor</label>
+            <input type="text" name="Author" value="Anônimo"
+                title="Preenchimento obrigatório, em caso de autor desconhecido mantenho o nome como 'Anônimo' "
+                required>
+            <br /><br />
+            <label title="Breve descrição do cénario">Ambientação</label>
+            <textarea id="inAmbiance" type="text" name="Ambiance" class="inlarge" title="Preenchimento obrigatório"
+                required></textarea>
+            <label title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">Palavras
+                Chave</label>
+            <div id="tags" title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">
+                <input type="text" class="texttables" name="Tags">
+            </div>
+            <button id="moretags">Mais tags</button>
+            <br />
+            <label title="Cores do cenário">Cores</label>
+            <div class="divcolor">
+                <div>
+                    <label title="Cor de fundo da tela do cenário e das histórias criadas sobre ele">Cor de
+                        fundo</label>
+                    <input type="color" name="BackgroundColor"
+                        title="Cor de fundo da tela do cenário e das histórias criadas sobre ele" value="#9FCFBF">
+                </div>
+                <div>
+                    <label title="Cor do texto usado no cenário e nas histórias criadas sobre ele">Cor de texto</label>
+                    <input type="color" name="TextColor"
+                        title="Cor do texto usado no cenário e nas histórias criadas sobre ele" value="#000000">
+                </div>
+            </div>
+            <br />
+            <label title="Imagem que ilustará a capa do cenário">Imagem de Capa</label>
+            <div>
+                <label title="Caso utilize uma imagem disponivel em algum site na internet">URL da imagem</label>
+                <input type="url" id="imgURL" name="imgURL"
+                    title="Caso utilize uma imagem disponivel em algum site na internet" placeholder="https://..."
+                    required>
+                <label
+                    title="Caso prefira utilizar uma imagem que tenha em sua maquina voce pode fazer upload, mas há um limite de tamanho pois ela será incorporada ao arquivo do cenário"><strong>ou</strong>
+                    upload (max 1 MB)</label>
+                <input type="file" id="imgFile" accept="image/*"
+                    title="Caso prefira utilizar uma imagem que tenha em sua maquina voce pode fazer upload, mas há um limite de tamanho pois ela será incorporada ao arquivo do cenário">
+                <label title="Prévia da imagem de capa">Preview</label>
+                <img id="previewcover" />
+            </div>
+            <label title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">Arquivo Texto</label>
+            <input type="url" placeholder="https://..." name="textURL"
+                title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">
+            <h3 title="tabela para criação de personagem do jogador">Personagem</h3>
+            <label title="tabela para criação de personagem do jogador">Arquétipos</label>
+            <div title="tabela para criação de personagem do jogador">
+                <input type="text" class="texttables" name="Archetypes" required>
+                <input type="text" class="texttables" name="Archetypes">
+                <input type="text" class="texttables" name="Archetypes">
+                <input type="text" class="texttables" name="Archetypes">
+                <input type="text" class="texttables" name="Archetypes">
+                <input type="text" class="texttables" name="Archetypes">
+            </div>
+            <h3 title="tabela para criação de aventura">Trama</h3>
+            <label title="tabela para criação de aventura">Algo aconteceu...</label>
+            <div title="tabela para criação de aventura">
+                <input type="text" class="texttables" name="Occurrence" required>
+                <input type="text" class="texttables" name="Occurrence">
+                <input type="text" class="texttables" name="Occurrence">
+                <input type="text" class="texttables" name="Occurrence">
+                <input type="text" class="texttables" name="Occurrence">
+                <input type="text" class="texttables" name="Occurrence">
+            </div>
+            <label title="tabela para criação de aventura">Você precisa...</label>
+            <div title="tabela para criação de aventura">
+                <input type="text" class="texttables" name="Need" required>
+                <input type="text" class="texttables" name="Need">
+                <input type="text" class="texttables" name="Need">
+                <input type="text" class="texttables" name="Need">
+                <input type="text" class="texttables" name="Need">
+                <input type="text" class="texttables" name="Need">
+            </div>
+            <label title="tabela para criação de aventura">Senão...</label>
+            <div title="tabela para criação de aventura">
+                <input type="text" class="texttables" name="Otherwise" required>
+                <input type="text" class="texttables" name="Otherwise">
+                <input type="text" class="texttables" name="Otherwise">
+                <input type="text" class="texttables" name="Otherwise">
+                <input type="text" class="texttables" name="Otherwise">
+                <input type="text" class="texttables" name="Otherwise">
+            </div>
+            <h3 title="tabela para o desenrolar da história">Cenas</h3>
+            <label title="tabela para o desenrolar da história">Lugares</label>
+            <div title="tabela para o desenrolar da história">
+                <input type="text" class="texttables" name="Places" required>
+                <input type="text" class="texttables" name="Places">
+                <input type="text" class="texttables" name="Places">
+                <input type="text" class="texttables" name="Places">
+                <input type="text" class="texttables" name="Places">
+                <input type="text" class="texttables" name="Places">
+            </div>
+            <label title="tabela para o desenrolar da história">Personagens</label>
+            <div title="tabela para o desenrolar da história">
+                <input type="text" class="texttables" name="Characters" required>
+                <input type="text" class="texttables" name="Characters">
+                <input type="text" class="texttables" name="Characters">
+                <input type="text" class="texttables" name="Characters">
+                <input type="text" class="texttables" name="Characters">
+                <input type="text" class="texttables" name="Characters">
+            </div>
+            <label title="tabela para o desenrolar da história">Eventos</label>
+            <div title="tabela para o desenrolar da história">
+                <input type="text" class="texttables" name="Events" required>
+                <input type="text" class="texttables" name="Events">
+                <input type="text" class="texttables" name="Events">
+                <input type="text" class="texttables" name="Events">
+                <input type="text" class="texttables" name="Events">
+                <input type="text" class="texttables" name="Events">
+            </div>
+            <h3 title="tabela para idéias que podem ajudar a elaborar melhor a história">Banco de Idéias</h3>
+            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Assunto</label>
+            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                <input type="text" class="texttables" name="Subject" required>
+                <input type="text" class="texttables" name="Subject">
+                <input type="text" class="texttables" name="Subject">
+                <input type="text" class="texttables" name="Subject">
+                <input type="text" class="texttables" name="Subject">
+                <input type="text" class="texttables" name="Subject">
+            </div>
+            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Ação</label>
+            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                <input type="text" class="texttables" name="Action" required>
+                <input type="text" class="texttables" name="Action">
+                <input type="text" class="texttables" name="Action">
+                <input type="text" class="texttables" name="Action">
+                <input type="text" class="texttables" name="Action">
+                <input type="text" class="texttables" name="Action">
+            </div>
+            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Coisa</label>
+            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                <input type="text" class="texttables" name="Thing" required>
+                <input type="text" class="texttables" name="Thing">
+                <input type="text" class="texttables" name="Thing">
+                <input type="text" class="texttables" name="Thing">
+                <input type="text" class="texttables" name="Thing">
+                <input type="text" class="texttables" name="Thing">
+            </div>
+            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Qualidade</label>
+            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                <input type="text" class="texttables" name="Quality" required>
+                <input type="text" class="texttables" name="Quality">
+                <input type="text" class="texttables" name="Quality">
+                <input type="text" class="texttables" name="Quality">
+                <input type="text" class="texttables" name="Quality">
+                <input type="text" class="texttables" name="Quality">
+            </div>
+            <h3 title="Regras especificas para este cenário">Regras X</h3>
+            <div id="rules" title="Regras especificas para este cenário">
+                <div class="divrule">
+                    <label>Nome da regra</label>
+                    <input type="text" name="OwnRuleName">
+                    <label>Descrição da regra</label>
+                    <input type="text" name="OwnRuleNameDescription">
+                </div>
+            </div>
+            <button id="morerules">Mais regras</button>
+            <label title="qualquer informação que não esteja em outros campos, como referencias ou apoiadores">Outras
+                informações</label>
+            <input type="text" name="OtherNotes"
+                title="qualquer informação que não esteja em outros campos, como referencias ou apoiadores">
+            <input type="submit">
+        </form>
+        <fieldset id="toprint" hidden>
+            <div id="showcover" class="modaldiv">
+                <h1 id="printname"></h1>
+                <hr />
+                <img id="printcoverimg" />
+                <hr />
+                <div>
+                    <img id="dominuslogo" src="./imgs/logo-dominus.png" />
+                    <div>
+                        <span>Escrito por</span>
+                        <span id="printauthor"></span>
+                        <span>Via</span>
+                        <span id="printurlfont"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="showcore" class="modaldiv">
+                <h1 id="printnamec"></h1>
+                <span id="printauthorc">Escrito por</span>
+                <p>Este jogo foi feito utilizando Dominus, um sistema de RPG sem mestre, através da ferramenta <a
+                        id="dominuslink">DominusWeb</a>. Você encontrará todas as
+                    regras do Dominus no final deste documento.</p>
+                <span>Ambientação</span>
+                <hr />
+                <p id="pAmbience"></p>
+                <div id="showtables">
+                    <h3>Trama</h3>
+                    <table>
+                        <tr>
+                            <th class="tablenumber">d6</th>
+                            <th>Algo aconteceu...</th>
+                            <th>Você precisa...</th>
+                            <th>Senão...</th>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">1</td>
+                            <td class="tabletexttrama1"></td>
+                            <td class="tabletexttrama2"></td>
+                            <td class="tabletexttrama3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">2</td>
+                            <td class="tabletexttrama1"></td>
+                            <td class="tabletexttrama2"></td>
+                            <td class="tabletexttrama3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">3</td>
+                            <td class="tabletexttrama1"></td>
+                            <td class="tabletexttrama2"></td>
+                            <td class="tabletexttrama3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">4</td>
+                            <td class="tabletexttrama1"></td>
+                            <td class="tabletexttrama2"></td>
+                            <td class="tabletexttrama3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">5</td>
+                            <td class="tabletexttrama1"></td>
+                            <td class="tabletexttrama2"></td>
+                            <td class="tabletexttrama3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">6</td>
+                            <td class="tabletexttrama1"></td>
+                            <td class="tabletexttrama2"></td>
+                            <td class="tabletexttrama3"></td>
+                        </tr>
+                    </table>
+                    <h3>Arquétipos</h3>
+                    <table>
+                        <tr>
+                            <td class="tablenumber">1</td>
+                            <td class="tabletextArquetipos"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">2</td>
+                            <td class="tabletextArquetipos"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">3</td>
+                            <td class="tabletextArquetipos"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">4</td>
+                            <td class="tabletextArquetipos"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">5</td>
+                            <td class="tabletextArquetipos"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">6</td>
+                            <td class="tabletextArquetipos"></td>
+                        </tr>
+                    </table>
+                    <h3>Cenas</h3>
+                    <table>
+                        <tr>
+                            <th class="tablenumber">d6</th>
+                            <th>Lugares</th>
+                            <th>Personagens (1-3)</th>
+                            <th>Eventos (4-6)</th>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">1</td>
+                            <td class="tabletextscena1"></td>
+                            <td class="tabletextscena2"></td>
+                            <td class="tabletextscena3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">2</td>
+                            <td class="tabletextscena1"></td>
+                            <td class="tabletextscena2"></td>
+                            <td class="tabletextscena3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">3</td>
+                            <td class="tabletextscena1"></td>
+                            <td class="tabletextscena2"></td>
+                            <td class="tabletextscena3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">4</td>
+                            <td class="tabletextscena1"></td>
+                            <td class="tabletextscena2"></td>
+                            <td class="tabletextscena3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">5</td>
+                            <td class="tabletextscena1"></td>
+                            <td class="tabletextscena2"></td>
+                            <td class="tabletextscena3"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">6</td>
+                            <td class="tabletextscena1"></td>
+                            <td class="tabletextscena2"></td>
+                            <td class="tabletextscena3"></td>
+                        </tr>
+                    </table>
+                    <h3>Banco de Idéias</h3>
+                    <table>
+                        <tr>
+                            <th class="tablenumber">d6</th>
+                            <th>Assunto</th>
+                            <th>Ação</th>
+                            <th>Coisa</th>
+                            <th>Qualidade</th>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">1</td>
+                            <td class="tabletextidea1"></td>
+                            <td class="tabletextidea2"></td>
+                            <td class="tabletextidea3"></td>
+                            <td class="tabletextidea4"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">2</td>
+                            <td class="tabletextidea1"></td>
+                            <td class="tabletextidea2"></td>
+                            <td class="tabletextidea3"></td>
+                            <td class="tabletextidea4"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">3</td>
+                            <td class="tabletextidea1"></td>
+                            <td class="tabletextidea2"></td>
+                            <td class="tabletextidea3"></td>
+                            <td class="tabletextidea4"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">4</td>
+                            <td class="tabletextidea1"></td>
+                            <td class="tabletextidea2"></td>
+                            <td class="tabletextidea3"></td>
+                            <td class="tabletextidea4"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">5</td>
+                            <td class="tabletextidea1"></td>
+                            <td class="tabletextidea2"></td>
+                            <td class="tabletextidea3"></td>
+                            <td class="tabletextidea4"></td>
+                        </tr>
+                        <tr>
+                            <td class="tablenumber">6</td>
+                            <td class="tabletextidea1"></td>
+                            <td class="tabletextidea2"></td>
+                            <td class="tabletextidea3"></td>
+                            <td class="tabletextidea4"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="showOwnRules"></div>
+            </div>
+            <div id="showback" class="modaldiv">
+                <h2>REGRAS</h2>
+                <p>Estas são as regras genéricas do sistema Dominus.</p>
+                <div class="rule">
+                    <h3>Regra 1: Preparação</h3>
+                    <article>Escolha (ou role) um Arquétipo na tabela e dê um nome para seu personagem. Depois role um
+                        dado para
+                        cada uma das três colunas na tabela de Trama.</article>
+                </div>
+                <div class="rule">
+                    <h3>Regra 2: História</h3>
+                    <article>Para começar a sua história, escolha (ou role) um Lugar na tabela de Cenas. Sempre que
+                        entrar em
+                        uma Cena, role um dado. Se cair 3 ou menos, role um Personagem. Se cair 4 ou mais, role um
+                        Evento. Você
+                        pode ir para uma nova cena se achar apropriado (e tenha resolvido qualquer conflito aparente).
+                    </article>
+                </div>
+                <div class="rule">
+                    <h3>Regra 3: Desafio</h3>
+                    <article>Sempre que seu personagem tentar fazer algo que possa dar errado, você tem um Desafio: role
+                        um
+                        dado. Se tirar 4 ou mais, você conseguiu vencê-lo. Se houver algo nesta situação que lhe dê
+                        vantagem
+                        nesse Desafio, role 2 dados e escolha o maior. Caso algo lhe dê desvantagem, role 2 dados e
+                        escolha o
+                        menor.</article>
+                </div>
+                <div class="rule">
+                    <h3>Regra 4: Dilema</h3>
+                    <article>Sempre que tiver uma dúvida cuja resposta não seja óbvia, determine duas opções possíveis
+                        (sim ou
+                        não, esquerda ou direita, acontece A ou acontece B etc) e role um dado. Se cair 3 ou menos é a
+                        primeira
+                        opção, e se cair 4 ou mais é a segunda opção.</article>
+                </div>
+                <div class="rule">
+                    <h3>Regra 5: Banco de Ideias</h3>
+                    <article>Sempre que precisar elaborar melhor um Lugar, Personagem ou Evento, role no Banco de Ideias
+                        e
+                        interprete o resultado de qualquer coluna de acordo com o Cenário.</article>
+                </div>
+                <hr />
+                <img id="CClogo" src="./imgs/CC-BY-180x65.jpg" />
+                <p>Esta obra foi criada pelo coletivo “Iniciativa Dominus” e está licenciada com uma
+                    Licença Creative Commons Atribuição 4.0 Internacion</p>
+            </div>
+        </fieldset>
+        <div id="modalabout" class="modal hiddendiv">
+            <div id="about-header" class="modal-header">
+                <span id="closeaboutbt">X</span>
+            </div>
+            <div id="about">
+                <span>Desenvolvido por: Stênio Vinicios de Medeiros</span>
+                <span>Portifolio: <a href="https://steniovm.github.io/steniovm/"
+                        alt="Meu portifolio de projetos">https://steniovm.github.io/steniovm/</a></span>
+                <span>Email: <a href="mailto:steniovm@gmail.com" alt="Meu email">steniovm@gmail.com</a></span>
+                <br /><br />
+                <img id="aboutd" src="./imgs/logo-dominus.png">
+                <br />
+                <span>O sistema Dominus RPG é de autoria anônima e encontra-se sob licença <a
+                        href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank">Creative Commons
+                        4.0</a></span>
+                <img id="aboutcc" id="CClogo" src="./imgs/CC-BY-180x65.jpg" />
+                <br /><br />
+                <span><a href="https://docs.google.com/document/d/1dpwhswNvg2cgHPJ-7bnlg43MF0mvACDjd4QmrBLjBI4/edit#heading=h.y1t6y85ts5ut"
+                        target="_blank">Obtenha o material original do sistema Dominus RPG</a></span>
+                <p>A obra original foi criada pelo coletivo “Iniciativa Dominus”</p>
+            </div>
+        </div>
+        <div id="modalonline" class="modal hiddendiv">
+            <div id="online-header" class="modal-header">
+                <span id="closeonlinebt">X</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Autor</th>
+                        <th>Palavras Chave</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tscen"></tbody>
+            </table>
+        </div>
+        </div>
+    </main>
+    <a href="https://drive.google.com/drive/folders/1yCx5s9EAQGN5evy2Ff7jkSUi_O8VI71A?usp=sharing"
+        target="_blank">Baixar Cenários</a>
+    <footer>
+        <div id="divinfo" class="divinfo">
+            <span>Desenvolvido por: Stênio Vinicios de Medeiros</span>
+            <span>Portifolio: <a href="https://steniovm.github.io/steniovm/"
+                    alt="Meu portifolio de projetos">https://steniovm.github.io/steniovm/</a></span>
+            <span>Email: <a href="mailto:steniovm@gmail.com" alt="Meu email">steniovm@gmail.com</a></span>
+            <span>O sistema Dominus RPG é de autoria anônima e encontra-se sob licença <a
+                    href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank">Creative Commons
+                    4.0</a></span>
+            <span><a href="https://docs.google.com/document/d/1dpwhswNvg2cgHPJ-7bnlg43MF0mvACDjd4QmrBLjBI4/edit#heading=h.y1t6y85ts5ut"
+                    target="_blank">Obtenha o material original do sistema Dominus RPG</a></span>
+        </div>
+        <div id="sitelinks">
+            Conheça também:
+            <a href="https://steniovm.github.io/steniovm/GeradorGoblin/index.html" target="_blank">
+                <i>Gerador Goblin</i>
+            </a>
+            <a href="https://steniovm.github.io/steniovm/RPGSongs/index.html" target="_blank">
+                <i>RPG Songs</i>
+            </a>
+            <a href="https://steniovm.github.io/steniovm/GoblinSongs/index.html" target="_blank">
+                <i>Sons de Goblins</i>
+            </a>
+            <a href="https://guaxinimonline.onrender.com/" target="_blank">
+                <i>Guaxinins & Gambiarras</i>
+            </a>
+            <a href="https://historias-incriveis.onrender.com/" target="_blank">
+                <i>Histórias Incríveis</i>
+            </a>
+            <a href="https://steniovm.github.io/steniovm/DiceProbability/index.html" target="_blank"><i>Probabilidade em
+                    Dados</i></a>
+            <a href="https://scisimulab.com.br/" target="_blank">
+                <i>Sci Simu Lab</i>
+            </a>
+            <a href="https://steniovm.github.io/steniovm/" target="_blank">
+                <i>Outras produções minhas</i>
+            </a>
+        </div>
+    </footer>
+    <input id="fileopem" type="file" hidden />
+    <script type="text/javascript" src="createscript.js"></script>
+</body>
+
+</html>

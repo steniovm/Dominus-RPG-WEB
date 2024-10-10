@@ -1,0 +1,126 @@
+form {
+  width: 95%;
+}
+
+form div {
+  padding: 0 0 0 10px;
+}
+
+input {
+  border-radius: 5px;
+}
+
+input[type=text],
+input[type=file],
+input[type=color],
+input[type=url],
+#inAmbiance {
+  width: 100%;
+  height: 1.5em;
+  border: unset;
+  box-shadow: 5px 5px 10px #888888;
+  margin: 0 0 10px 0;
+  text-align: start;
+  text-indent: 10px;
+}
+
+input[type=color] {
+  padding: 0;
+  max-width: 20px;
+}
+
+input[type=submit] {
+  max-width: 100px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+.texttables {
+  width: 32% !important;
+  min-width: 145px;
+}
+
+.divcolor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.divcolor>div {
+  width: 45%;
+}
+
+#inAmbiance {
+  height: 2rem;
+}
+
+#previewcover {
+  height: 50px;
+  min-width: 50px;
+  border: groove 2px gray;
+}
+
+#showtables {
+  display: flex;
+  flex-direction: column;
+}
+
+.tablenumber {
+  background-color: #a9a9a9;
+  font-weight: bold;
+  width: 25px;
+}
+
+#showcover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#showcover hr {
+  width: 100%;
+}
+
+#showcover>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#showcover>div>img {
+  height: 65px;
+}
+
+#showcover>div>div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+p {
+  text-align: justify;
+  font-weight: normal;
+}
+
+#printcoverimg {
+  max-width: 600px;
+  max-height: 800px;
+}
+
+#showback {
+  align-items: center;
+  text-align: center;
+}
+
+.rule {
+  text-align: justify;
+  font-weight: normal;
+}
+
+.rule * {
+  display: inline;
+}

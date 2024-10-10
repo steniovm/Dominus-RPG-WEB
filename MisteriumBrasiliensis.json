@@ -1,0 +1,106 @@
+{
+  "Name": "Misterium Brasiliensis",
+  "Author": "Raissa \"MIAWZAWA\" Aguiar",
+  "Ambiance": "O planeta Terra está doente e a humanidade, mesmo causando estes efeitos e desastres, ainda é a chave para resolver os problemas. Algo de errado está acontecendo nos biomas brasileiros e você, um simples estudante trabalhando em campo, precisa proteger a natureza e cuidar das pessoas. O raciocínio lógico, o método científico e as diversas inteligências são nossos superpoderes! Vamos, não perca tempo! \n Tabuleiro Literário",
+  "Tags": ["Apocalipse ambiental"],
+  "BackgroundColor": "#C5D4C3",
+  "TextColor": "#0E2A11",
+  "imgURL": "https://64.media.tumblr.com/588d866c6b9dbd951d41221e24f91171/tumblr_oov2ssO1l41vtxk8uo1_1280.jpg",
+  "textURL": "",
+  "Archetypes": [
+    "Cientista.",
+    "Jornalista.",
+    "Policial / Militar.",
+    "Enfermeiro(a) / Médico(a).",
+    "Técnico em Computação / Hacker.",
+    "Líder Comunitário / Religioso."
+  ],
+  "Occurrence": [
+    "Uma criatura estranha foi vista por moradores da região.",
+    "Estão capturando ilegalmente animais nativos.",
+    "Os moradores da localidade estão ficando misteriosamente doentes.",
+    "Um cientista desapareceu.",
+    "Todas as flores nativas e exóticas estão morrendo.",
+    "Desmataram uma grande área do local e ninguém viu nada."
+  ],
+  "Need": [
+    "Impedir que cometam um crime.",
+    "Proteger a natureza.",
+    "Enfrentar criaturas ou pessoas.",
+    "Procurar algo ou alguém.",
+    "Investigar boatos.",
+    "Destruir um equipamento."
+  ],
+  "Otherwise": [
+    "Você morrerá.",
+    "Toda a biogeografia local será alterada.",
+    "Você não receberá o dinheiro da bolsa de estudos.",
+    "Muitas pessoas morrerão.",
+    "Faltará alimento para toda a região.",
+    "Diversas espécies entrarão em extinção."
+  ],
+  "Places": [
+    "Amazônia",
+    "Pantanal",
+    "Caatinga",
+    "Cerrado",
+    "Mata Atlântica",
+    "Pampa"
+  ],
+  "Characters": [
+    "Caçador(a).",
+    "Aborígene.",
+    "Político.",
+    "Cientista.",
+    "Um animal.",
+    "Policial."
+  ],
+  "Events": [
+    "Chuva ácida.",
+    "Queimada.",
+    "Um animal aparece.",
+    "Uma manifestação.",
+    "Uma armadilha.",
+    "Um ataque surpresa."
+  ],
+  "IdeaBank": [
+    {
+      "Subject": "Pessoas e/ou animais em perigo.",
+      "Action": "Salvar.",
+      "Thing": "Suprimentos.",
+      "Quality": "Bom / Novo / Muito / Feliz."
+    },
+    {
+      "Subject": "Pedido de socorro.",
+      "Action": "Encontrar.",
+      "Thing": "Mapas e GPS.",
+      "Quality": "Ruim / Danificado / Pouco / Triste."
+    },
+    {
+      "Subject": "Desenvolvimento sustentável.",
+      "Action": "Proteger.",
+      "Thing": "Kit de Primeiros Socorros.",
+      "Quality": "Fraco / Irrelevante."
+    },
+    {
+      "Subject": "Mistérios e lendas.",
+      "Action": "Investigar.",
+      "Thing": "Dinheiro.",
+      "Quality": "Poderoso(a)."
+    },
+    {
+      "Subject": "Atividade suspeita.",
+      "Action": "Resgatar.",
+      "Thing": "Celular.",
+      "Quality": "Simples."
+    },
+    {
+      "Subject": "Riqueza e negócios.",
+      "Action": "Lutar.",
+      "Thing": "Arma.",
+      "Quality": "Sofisticado."
+    }
+  ],
+  "OwnRule": [],
+  "OtherNotes": "O planeta Terra está doente e a humanidade, mesmo causando estes efeitos e desastres, ainda é a chave para resolver os problemas. Algo de errado está acontecendo nos biomas brasileiros e você, um simples estudante trabalhando em campo, precisa proteger a natureza e cuidar das pessoas. O raciocínio lógico, o método científico e as diversas inteligências são nossos superpoderes! Vamos, não perca tempo! \n Tabuleiro Literário"
+}
