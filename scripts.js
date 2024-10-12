@@ -7,6 +7,10 @@ const vinputs = document.querySelectorAll(".inte");
 const modaldivs = document.getElementsByClassName("modaldiv");
 const svglist = document.querySelectorAll("#divsvgs>svg");
 const archetypelist = document.getElementsByClassName("tabletextArquetipos");
+const textarchs = document.getElementsByClassName("textarch");
+const texttrama1s = document.getElementsByClassName("texttrama1");
+const texttrama2s = document.getElementsByClassName("texttrama2");
+const texttrama3s = document.getElementsByClassName("texttrama3");
 const occurrencelist = document.getElementsByClassName("tabletexttrama1");
 const needlist = document.getElementsByClassName("tabletexttrama2");
 const otherwiselist = document.getElementsByClassName("tabletexttrama3");
@@ -98,6 +102,22 @@ function loadedscene() {
     addRow(2);
     scenarioname.innerHTML = scenario.Name;
   }
+  scenario.Archetypes.forEach((el, ind) => {
+    textarchs[ind].innerHTML = el;
+    textarchs[ind].value = el;
+  });
+  scenario.Occurrence.forEach((el, ind) => {
+    texttrama1s[ind].innerHTML = el;
+    texttrama1s[ind].value = el;
+  });
+  scenario.Need.forEach((el, ind) => {
+    texttrama2s[ind].innerHTML = el;
+    texttrama2s[ind].value = el;
+  });
+  scenario.Otherwise.forEach((el, ind) => {
+    texttrama3s[ind].innerHTML = el;
+    texttrama3s[ind].value = el;
+  });
   if (scenario.BackgroundColor)
     if (scenario.TextColor)
       //bodyelement.style.backgroundColor = scenario.BackgroundColor;

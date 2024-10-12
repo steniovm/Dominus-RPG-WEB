@@ -85,7 +85,7 @@ select {
     min-width: 100px;
     border-radius: 10px;
     background-color: #ffffffcc;
-    text-align: center;
+    text-align:start;
     width: fit-content;
     cursor: pointer;
 }

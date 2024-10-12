@@ -29,10 +29,6 @@ input[type=color] {
   max-width: 20px;
 }
 
-input[type=submit] {
-  max-width: 100px;
-}
-
 label {
   display: block;
   font-weight: bold;
