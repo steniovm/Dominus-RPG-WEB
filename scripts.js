@@ -178,6 +178,7 @@ bttrama3.addEventListener("click", () => {
 });
 //cria personagem e trama
 fcaracter.addEventListener("click", () => {
+  addRow();
   creatCaracter();
   creatTrama();
   addRow();
