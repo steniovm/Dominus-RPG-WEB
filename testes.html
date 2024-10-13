@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta property="og:title" content="Dominus RPG Solo" />
+  <meta property="og:description" content='Escolha um cenário e jogue RPG Solo pelo sistema brasileiro Dominus' />
+  <meta property="og:locale" content="pt-br" />
+  <meta property="og:image" itemprop="image" content="dominusweb.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="Imagem do Dominus" />
+  <link rel="shortcut icon" href="imgs/favicon.ico">
+  <meta property="description" content='Escolha um cenário e jogue RPG Solo pelo sistema brasileiro Dominus' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Dominus - RPG Solo com Multiplos Cenários</title>
+  <link rel="stylesheet" href="style.css" />
+  <style id="stylefomat">
+    input,
+    button,
+    textarea,
+    input[type=text],
+    input[type=file] {
+      width: 700px;
+    }
+
+    textarea {
+      height: 50vh;
+      min-height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>implementação (url)</h3>
+  <input type="url" id="inurl"
+    value="https://script.google.com/macros/s/AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA/exec" />
+  <h3>Solicitações</h3>
+  <button id="getlistbt">Baixar lista</button>
+  <br />
+  <input type="text" placeholder="ID do Cenário" />
+  <button id="getscen">Baixar cenário</button>
+  <br />
+  <input type="file" id="infile" accept=".json" placeholder="Carrecar cénario local" />
+  <button id="sendscen">Enviar cenário</button>
+  <br />
+  <textarea id="output"></textarea>
+</body>
+<script>
+  //implementação
+  let urlbd = "https://script.google.com/macros/s/AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA/exec"
+  //document.getElementById(inurl)
+  inurl.addEventListener("change", () => {
+    urlbd = inurl.value;
+    output.value += "\nurl agora é: " + urlbd + "\n";
+  });
+  getlistbt.addEventListener("click", getlist);
+  function getlist() {
+    fetch(urlbd).then(response => {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' + response.status);
+        output.innerText += "\nerro " + response.status + "\n";
+        return;
+        response.json().then(data => {
+          output.innerText += "\n" + data + "\n";
+        });
+      }
+    }).catch(err => {
+      console.log('Fetch Error :-S', err);
+      output.innerText += "\nerro " + err + "\n";
+    });
+  }
+</script>
+
+</html>
