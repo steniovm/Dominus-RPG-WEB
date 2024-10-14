@@ -82,8 +82,10 @@
   }
   sendscen.addEventListener("click", postrequest);
   function postrequest() {
+    const he = new Headers();
+    he.append("Access-Control-Allow-Origin", "*");
     if (filelist) {
-      fetch(urlbd, { method: "POST", body: scenario }).then(response => {
+      fetch(urlbd, { method: "POST", mode: "no-cors", header: he, body: scenario }).then(response => {
         if (response.status !== 200) {
           console.log('Looks like there was a problem. Status Code: ' + response.status);
           output.innerText += "\nerro " + response.status + "\n";
