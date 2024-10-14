@@ -33,12 +33,12 @@
 <body>
   <h3>implementação (url)</h3>
   <input type="url" id="inurl"
-    value="https://script.google.com/macros/s/AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA/exec" />
+    value="https://script.google.com/macros/s/AKfycbyEj_S-obS0w9-iBPFAfs1R8gMNYj8PFw48iQtUHRWLJmRGEqrnjy476K9UHKOEzIadew/exec" />
   <h3>Solicitações</h3>
   <button id="getlistbt">Baixar lista</button>
   <br />
-  <input type="text" placeholder="ID do Cenário" />
-  <button id="getscen">Baixar cenário</button>
+  <input type="text" id="idscenin" placeholder="ID do Cenário" />
+  <button id="getscena">Baixar cenário</button>
   <br />
   <input type="file" id="infile" accept=".json" placeholder="Carrecar cénario local" />
   <button id="sendscen">Enviar cenário</button>
@@ -47,28 +47,68 @@
 </body>
 <script>
   //implementação
-  let urlbd = "https://script.google.com/macros/s/AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA/exec"
+  let urlbd = "https://script.google.com/macros/s/AKfycbyEj_S-obS0w9-iBPFAfs1R8gMNYj8PFw48iQtUHRWLJmRGEqrnjy476K9UHKOEzIadew/exec"
   //document.getElementById(inurl)
+  let filelist = false;
+  let scenario = {};
   inurl.addEventListener("change", () => {
     urlbd = inurl.value;
     output.value += "\nurl agora é: " + urlbd + "\n";
   });
   getlistbt.addEventListener("click", getlist);
   function getlist() {
-    fetch(urlbd).then(response => {
+    getrequest(urlbd + "?type=list");
+  }
+  getscena.addEventListener("click", getscen);
+  function getscen() {
+    const idscen = idscenin.value;
+    getrequest(urlbd + "?type=scen&id=" + idscen);
+  }
+  function getrequest(url) {
+    fetch(url).then(response => {
       if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: ' + response.status);
         output.innerText += "\nerro " + response.status + "\n";
         return;
-        response.json().then(data => {
-          output.innerText += "\n" + data + "\n";
-        });
       }
+      response.json().then(data => {
+        console.log(data);
+        output.innerText += "\n" + JSON.stringify(data.body) + "\n";
+      });
     }).catch(err => {
       console.log('Fetch Error :-S', err);
       output.innerText += "\nerro " + err + "\n";
     });
   }
+  sendscen.addEventListener("click", postrequest);
+  function postrequest() {
+    if (filelist) {
+      fetch(urlbd, { method: "POST", body: scenario }).then(response => {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' + response.status);
+          output.innerText += "\nerro " + response.status + "\n";
+          return;
+        }
+        response.json().then(data => {
+          console.log(data);
+          output.innerText += "\n" + JSON.stringify(data.body) + "\n";
+        });
+      }).catch(err => {
+        console.log('Fetch Error :-S', err);
+        output.innerText += "\nerro " + err + "\n";
+      });
+    }
+  }
+  infile.addEventListener("change", function () {
+    filelist = new FileReader();
+    filelist.readAsText(infile.files[0]);
+    filelist.onload = function () {
+      scenario = JSON.parse(filelist.result);
+    };
+    filelist.onerror = function () {
+      console.log(filelist.error);
+    };
+  });
 </script>
 
 </html>
