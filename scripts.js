@@ -28,6 +28,11 @@ const TIMELIMIT = 60000;
 let scenario = {};
 let caracter = { name: "", archetype: "", gamer: "" };
 let timeoutnumber = 0;
+let urlbd =
+  "https://script.google.com/macros/s/AKfycbyEj_S-obS0w9-iBPFAfs1R8gMNYj8PFw48iQtUHRWLJmRGEqrnjy476K9UHKOEzIadew/exec";
+//implementação
+//https://script.google.com/macros/s/AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA/exec
+//AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA
 //configura links do menu
 opemeditor.href = window.location.origin + "/scenariocreate.html";
 //redimensionamento de caixas de texto
@@ -579,19 +584,31 @@ function savejpeg() {
     historytext.scrollTop = historytext.scrollHeight;
   });
 }
+async function getrequest(url, funcAux) {
+  fetch(url)
+    .then((response) => {
+      if (response.status !== 200) {
+        console.log(
+          "Looks like there was a problem. Status Code: " + response.status
+        );
+        output.innerText += "\nerro " + response.status + "\n";
+        return;
+      }
+      response.json().then((data) => {
+        funcAux(data.body);
+      });
+    })
+    .catch((err) => {
+      console.log("Fetch Error :-S", err);
+    });
+}
 opemonline.addEventListener("click", listOnlineFiles);
 function listOnlineFiles() {
-  //requicitar a função listallfiles() do googlescript
-  const list = [
-    [
-      "1WpDhnpdiuwxmOAMiDK46ZJP9rDP5Slye",
-      "Misterium Brasiliensis",
-      'Raissa "MIAWZAWA" Aguiar',
-      "",
-    ],
-    ["1tf167H5Ah4WfccLo7RL5GVg_1Vyu2RTl", "Cenário padrão", "Autor padrão", ""],
-  ];
-  listonline = list;
+  getrequest(urlbd + "?type=list", listOnlineFilesAux);
+}
+function listOnlineFilesAux(result) {
+  listonline = result;
+  console.log(listonline);
   tscen.innerHTML = "";
   listonline.forEach((el) => {
     appendonline(el);
@@ -626,8 +643,9 @@ function closeonline() {
 }
 function opemfileonline(idscen) {
   console.log("Cenário id: " + idscen);
+  getrequest(urlbd + "?type=scen&id=" + idscen, opemfileonlineAux);
   //fazer uma requicisão com i id
-  const idsscen = {
+  /*const idsscen = {
     "1WpDhnpdiuwxmOAMiDK46ZJP9rDP5Slye": "MisteriumBrasiliensis.json",
     "1tf167H5Ah4WfccLo7RL5GVg_1Vyu2RTl": "padrao.json",
   };
@@ -650,10 +668,18 @@ function opemfileonline(idscen) {
     })
     .catch((error) => {
       console.log(error);
-    });
+    });*/
+}
+function opemfileonlineAux(result) {
+  scenario = result;
+  console.log(scenario);
+  loadedscene();
+  fillSheets();
+  closeonline();
 }
 /*
 Falta
 - comentários disqus
 - backend (google apps script ???)
+- criar função clear() para limpar tudo ao trocar de cenário
 */
