@@ -552,6 +552,28 @@
     </main>
     <a href="https://drive.google.com/drive/folders/1yCx5s9EAQGN5evy2Ff7jkSUi_O8VI71A?usp=sharing"
         target="_blank">Baixar Cenários</a>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        var disqus_config = function () {
+            this.page.url = "https://dominusrpg.vercel.app/scenariocreate.html";
+        };
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://dominusweb.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
     <footer>
         <div id="divinfo" class="divinfo">
             <span>Desenvolvido por: Stênio Vinicios de Medeiros</span>
@@ -593,6 +615,7 @@
     </footer>
     <input id="fileopem" type="file" hidden />
     <script type="text/javascript" src="createscript.js"></script>
+    <script id="dsq-count-scr" src="//dominusweb.disqus.com/count.js" async></script>
 </body>
 
 </html>
