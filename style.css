@@ -3,6 +3,11 @@
     src: url("./fonts/GROBOLD.ttf") format("truetype");
 }
 
+html{
+    display: flex;
+    justify-content: center;
+}
+
 body {
     background-color: #9FCFBF;
     display: flex;
@@ -10,7 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 1000px;
+    max-width: 710px;
     margin: 4px 1px;
     padding: 20vh 0 0 0;
 }
@@ -20,7 +25,7 @@ header {
     flex-direction: row;
     height: 10vh;
     width: 100%;
-    max-width: 1000px;
+    max-width: 710px;
     background-color: #8FBFAF;
     position: fixed;
     top: 0;
@@ -29,7 +34,7 @@ header {
 h1 {
     width: 100%;
     text-align: center;
-    margin: 0;
+    margin: auto;
 }
 
 h2, h3 {
@@ -388,4 +393,9 @@ nav * {
     border: 2px groove #c0c0c0;
     display: block;
     width: 150px;
+}
+
+#disqus_thread{
+    width: 100vw;
+    max-width: 710px;
 }
