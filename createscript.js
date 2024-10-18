@@ -15,6 +15,8 @@ const tabletextidea1 = document.getElementsByClassName("tabletextidea1");
 const tabletextidea2 = document.getElementsByClassName("tabletextidea2");
 const tabletextidea3 = document.getElementsByClassName("tabletextidea3");
 const tabletextidea4 = document.getElementsByClassName("tabletextidea4");
+let urlbd =
+  "https://script.google.com/macros/s/AKfycbyEj_S-obS0w9-iBPFAfs1R8gMNYj8PFw48iQtUHRWLJmRGEqrnjy476K9UHKOEzIadew/exec";
 let listonline = [];
 formdata.addEventListener("submit", (ev) => {
   ev.preventDefault();
@@ -443,24 +445,6 @@ function showabout() {
   modalabout.classList.remove("hiddendiv");
 }
 opemonline.addEventListener("click", listOnlineFiles);
-function listOnlineFiles() {
-  //requicitar a função listallfiles() do googlescript
-  const list = [
-    [
-      "1WpDhnpdiuwxmOAMiDK46ZJP9rDP5Slye",
-      "Misterium Brasiliensis",
-      'Raissa "MIAWZAWA" Aguiar',
-      "",
-    ],
-    ["1tf167H5Ah4WfccLo7RL5GVg_1Vyu2RTl", "Cenário padrão", "Autor padrão", ""],
-  ];
-  listonline = list;
-  tscen.innerHTML = "";
-  listonline.forEach((el) => {
-    appendonline(el);
-  });
-  modalonline.classList.remove("hiddendiv");
-}
 function appendonline(scen) {
   const sline = document.createElement("tr");
   const scolname = document.createElement("td");
@@ -487,28 +471,44 @@ closeonlinebt.addEventListener("click", closeonline);
 function closeonline() {
   modalonline.classList.add("hiddendiv");
 }
-function opemfileonline(idscen) {
-  console.log("Cenário id: " + idscen);
-  //fazer uma requicisão com i id
-  const idsscen = {
-    "1WpDhnpdiuwxmOAMiDK46ZJP9rDP5Slye": "MisteriumBrasiliensis.json",
-    "1tf167H5Ah4WfccLo7RL5GVg_1Vyu2RTl": "padrao.json",
-  };
-  const scenurl = window.location.origin + "/" + idsscen[idscen];
-  fetch(scenurl)
-    .then((res) => {
-      if (res.status !== 200) {
+
+async function getrequest(url, funcAux) {
+  timediv.classList.remove("hiddendiv");
+  fetch(url)
+    .then((response) => {
+      if (response.status !== 200) {
         console.log(
-          "Looks like there was a problem. Status Code: " + res.status
+          "Looks like there was a problem. Status Code: " + response.status
         );
+        output.innerText += "\nerro " + response.status + "\n";
         return;
       }
-      res.json().then((data) => {
-        filetoscreem(data);
-        closeonline();
+      response.json().then((data) => {
+        funcAux(data.body);
+        timediv.classList.add("hiddendiv");
       });
     })
-    .catch((error) => {
-      console.log(error);
+    .catch((err) => {
+      console.log("Fetch Error :-S", err);
     });
+}
+function listOnlineFiles() {
+  getrequest(urlbd + "?type=list", listOnlineFilesAux);
+}
+function listOnlineFilesAux(result) {
+  listonline = result;
+  console.log(listonline);
+  tscen.innerHTML = "";
+  listonline.forEach((el) => {
+    appendonline(el);
+  });
+  modalonline.classList.remove("hiddendiv");
+}
+function opemfileonline(idscen) {
+  console.log("Cenário id: " + idscen);
+  getrequest(urlbd + "?type=scen&id=" + idscen, opemfileonlineAux);
+}
+function opemfileonlineAux(result) {
+  modalonline.classList.add("hiddendiv");
+  filetoscreem(result);
 }

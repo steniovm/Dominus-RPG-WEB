@@ -12,6 +12,7 @@ body {
     flex-wrap: wrap;
     max-width: 1000px;
     margin: 4px 1px;
+    padding: 20vh 0 0 0;
 }
 
 header {
@@ -19,7 +20,10 @@ header {
     flex-direction: row;
     height: 10vh;
     width: 100%;
-    background-color: #ffffff55;
+    max-width: 1000px;
+    background-color: #8FBFAF;
+    position: fixed;
+    top: 0;
 }
 
 h1 {
@@ -78,7 +82,6 @@ section>div {
     flex-wrap: wrap;
 }
 
-
 input,
 button,
 select {
@@ -107,13 +110,12 @@ p {
 }
 
 .modal{
-    /*display: none;*/ /* invisivel por padrão */
-    display: block; /*apagar depois de pronto*/
+    display: block;
     position: fixed;
-    z-index: 1; /* inicialmente acima */
+    z-index: 1;
     left: auto;
     top: 10px;
-    overflow: auto; /*ativa rolagem quando necessario */
+    overflow: auto;
     border: 1px solid;
     border-radius: 5px;
     width: min-content;
@@ -121,6 +123,16 @@ p {
     background-color: #cf9fabe6;
     max-height: 90vh;
     padding: 0.5em 1em;
+}
+#timediv{
+    width: 50px;
+    min-width: fit-content;
+    background-color: transparent;
+    border: none;
+    top:20vh;
+}
+#timediv > img {
+    width: 50px;
 }
 .showmodal{
     display: block;
@@ -236,6 +248,7 @@ table {
     background-color: #ddd;
     text-align: center;
     border-radius: 5px;
+    width: 100%;
 }
 
 td {
@@ -318,7 +331,12 @@ th {
     background-color: #a9a9a9;
     font-weight: bold;
 }
-
+nav {
+    background-color: #8FBFAF;
+    position: fixed;
+    top: 10vh;
+    border-radius: 5px;
+}
 nav * {
     margin: 0;
     padding: 0;

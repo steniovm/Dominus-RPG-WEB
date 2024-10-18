@@ -101,6 +101,8 @@ loadhistory.addEventListener("click", () => {
 });
 //leitura do arquivo
 function loadedscene() {
+  historytext.innerHTML = "";
+  historydiv.classList.add("hiddendiv");
   nextStep(1, 0);
   if (scenario.Name) {
     addTitle("Cenário: " + scenario.Name);
@@ -125,7 +127,6 @@ function loadedscene() {
   });
   if (scenario.BackgroundColor)
     if (scenario.TextColor)
-      //bodyelement.style.backgroundColor = scenario.BackgroundColor;
       stylefomat.innerHTML = `#historydiv{color:${scenario.TextColor}}
       #historytext{background-color: ${scenario.BackgroundColor}}`;
   if (scenario.OwnRule) {
@@ -585,6 +586,7 @@ function savejpeg() {
   });
 }
 async function getrequest(url, funcAux) {
+  timediv.classList.remove("hiddendiv");
   fetch(url)
     .then((response) => {
       if (response.status !== 200) {
@@ -596,6 +598,7 @@ async function getrequest(url, funcAux) {
       }
       response.json().then((data) => {
         funcAux(data.body);
+        timediv.classList.add("hiddendiv");
       });
     })
     .catch((err) => {
@@ -644,31 +647,6 @@ function closeonline() {
 function opemfileonline(idscen) {
   console.log("Cenário id: " + idscen);
   getrequest(urlbd + "?type=scen&id=" + idscen, opemfileonlineAux);
-  //fazer uma requicisão com i id
-  /*const idsscen = {
-    "1WpDhnpdiuwxmOAMiDK46ZJP9rDP5Slye": "MisteriumBrasiliensis.json",
-    "1tf167H5Ah4WfccLo7RL5GVg_1Vyu2RTl": "padrao.json",
-  };
-  const scenurl = window.location.origin + "/" + idsscen[idscen];
-  fetch(scenurl)
-    .then((res) => {
-      if (res.status !== 200) {
-        console.log(
-          "Looks like there was a problem. Status Code: " + res.status
-        );
-        return;
-      }
-      res.json().then((data) => {
-        scenario = data;
-        console.log(scenario);
-        loadedscene();
-        fillSheets();
-        closeonline();
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-    });*/
 }
 function opemfileonlineAux(result) {
   scenario = result;
@@ -680,6 +658,4 @@ function opemfileonlineAux(result) {
 /*
 Falta
 - comentários disqus
-- backend (google apps script ???)
-- criar função clear() para limpar tudo ao trocar de cenário
 */
