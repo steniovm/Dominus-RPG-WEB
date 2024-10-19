@@ -124,7 +124,8 @@ p {
     border: 1px solid;
     border-radius: 5px;
     width: min-content;
-    min-width: 65vw;
+    min-width: 360px;
+    max-width: 650px;
     background-color: #cf9fabe6;
     max-height: 90vh;
     padding: 0.5em 1em;
@@ -398,4 +399,22 @@ nav * {
 #disqus_thread{
     width: 100vw;
     max-width: 710px;
+}
+#modalonline td{
+    max-width: 300px;
+    overflow-wrap: break-word;
+}
+#modalonline tr:hover{
+    background-color: #b7e9d8;
+}
+#modalonline tr:active{
+    background-color: #87b9a8;
+}
+#modalonline td > button{
+    text-align: center;
+    font-weight: bold;
+    height: 100%;
+    min-width: auto;
+    width: fit-content;
+    background-color: #b7e9d8
 }

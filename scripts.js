@@ -29,7 +29,7 @@ let scenario = {};
 let caracter = { name: "", archetype: "", gamer: "" };
 let timeoutnumber = 0;
 let urlbd =
-  "https://script.google.com/macros/s/AKfycbyEj_S-obS0w9-iBPFAfs1R8gMNYj8PFw48iQtUHRWLJmRGEqrnjy476K9UHKOEzIadew/exec";
+  "https://script.google.com/macros/s/AKfycbx0qqLOgHC6s-GCPHYAEh0-XR4qH0ha9Mnt08W1-4vkg3sZ1xYf_FeUCWmG4k3eiLs3_w/exec";
 //implementação
 //https://script.google.com/macros/s/AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA/exec
 //AKfycbySDun34b29zLvxnmSHR3ddl5PY9DCZUI5CLHtWsw12yK4SSxCvoo600USH5SATnpreCA
@@ -623,21 +623,16 @@ function appendonline(scen) {
   const scolname = document.createElement("td");
   const scolauthor = document.createElement("td");
   const scolkeys = document.createElement("td");
-  const scolbt = document.createElement("td");
-  const scenbt = document.createElement("button");
   scolname.innerText = scen[1];
   scolauthor.innerText = scen[2];
-  scolkeys.innerText = scen[3];
-  scenbt.innerText = "abrir";
-  scenbt.value = scen[0];
-  scenbt.addEventListener("click", () => {
-    opemfileonline(scenbt.value);
+  scolkeys.innerText = scen[3].split(",").join(", ");
+  sline.value = scen[0];
+  sline.addEventListener("click", () => {
+    opemfileonline(sline.value);
   });
-  scolbt.appendChild(scenbt);
   sline.appendChild(scolname);
   sline.appendChild(scolauthor);
   sline.appendChild(scolkeys);
-  sline.appendChild(scolbt);
   tscen.appendChild(sline);
 }
 closeonlinebt.addEventListener("click", closeonline);
@@ -655,7 +650,3 @@ function opemfileonlineAux(result) {
   fillSheets();
   closeonline();
 }
-/*
-Falta
-- comentários disqus
-*/
