@@ -94,6 +94,7 @@
         <form id="formdata"
             action="https://script.google.com/macros/s/AKfycby0ubBEDPyGRU-ubClB6Up1x_g06Xmgjf6JLYVLxPwr6AehZPy3Dh29Z15qw-Tn9r48-Q/exec"
             method="post">
+            <hr />
             <h3>informações Gerais</h3>
             <label title="Nome que o cenário (e seu arquivo) terá">Titulo do Cenário</label>
             <input type="text" name="Name" title="Nome que o cenário (e seu arquivo) terá" required>
@@ -110,7 +111,7 @@
             <div id="tags" title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">
                 <input type="text" class="texttables" name="Tags">
             </div>
-            <button id="moretags">Mais tags</button>
+            <button id="moretags" class="btpress">Mais tags</button>
             <br />
             <label title="Cores do cenário">Cores</label>
             <div class="divcolor">
@@ -127,6 +128,7 @@
                 </div>
             </div>
             <br />
+            <hr />
             <label title="Imagem que ilustará a capa do cenário">Imagem de Capa</label>
             <div>
                 <label title="Caso utilize uma imagem disponivel em algum site na internet">URL da imagem</label>
@@ -144,6 +146,7 @@
             <label title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">Arquivo Texto</label>
             <input type="url" placeholder="https://..." name="textURL"
                 title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">
+            <hr />
             <h3 title="tabela para criação de personagem do jogador">Personagem</h3>
             <label title="tabela para criação de personagem do jogador">Arquétipos</label>
             <div title="tabela para criação de personagem do jogador">
@@ -154,6 +157,7 @@
                 <input type="text" class="texttables" name="Archetypes">
                 <input type="text" class="texttables" name="Archetypes">
             </div>
+            <hr />
             <h3 title="tabela para criação de aventura">Trama</h3>
             <label title="tabela para criação de aventura">Algo aconteceu...</label>
             <div title="tabela para criação de aventura">
@@ -182,6 +186,7 @@
                 <input type="text" class="texttables" name="Otherwise">
                 <input type="text" class="texttables" name="Otherwise">
             </div>
+            <hr />
             <h3 title="tabela para o desenrolar da história">Cenas</h3>
             <label title="tabela para o desenrolar da história">Lugares</label>
             <div title="tabela para o desenrolar da história">
@@ -210,6 +215,7 @@
                 <input type="text" class="texttables" name="Events">
                 <input type="text" class="texttables" name="Events">
             </div>
+            <hr />
             <h3 title="tabela para idéias que podem ajudar a elaborar melhor a história">Banco de Idéias</h3>
             <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Assunto</label>
             <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
@@ -247,6 +253,7 @@
                 <input type="text" class="texttables" name="Quality">
                 <input type="text" class="texttables" name="Quality">
             </div>
+            <hr />
             <h3 title="Regras especificas para este cenário">Regras X</h3>
             <div id="rules" title="Regras especificas para este cenário">
                 <div class="divrule">
@@ -256,7 +263,8 @@
                     <input type="text" name="OwnRuleNameDescription">
                 </div>
             </div>
-            <button id="morerules">Mais regras</button>
+            <button id="morerules" class="btpress">Mais regras</button>
+            <hr />
             <label title="qualquer informação que não esteja em outros campos, como referencias ou apoiadores">Outras
                 informações</label>
             <input type="text" name="OtherNotes"
