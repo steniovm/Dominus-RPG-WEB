@@ -21,6 +21,9 @@ const subjectlist = document.getElementsByClassName("tabletextidea1");
 const actionlist = document.getElementsByClassName("tabletextidea2");
 const thinglist = document.getElementsByClassName("tabletextidea3");
 const qualitylist = document.getElementsByClassName("tabletextidea4");
+const btclassfic = document.getElementsByClassName("btclassfic");
+const btup = document.getElementsByClassName("btup");
+const btdown = document.getElementsByClassName("btdown");
 //variaveis e constantes globais
 const audiourl = "./songs/dado-rolando.mp3";
 const MAXROWS = 8;
@@ -28,6 +31,8 @@ const TIMELIMIT = 60000;
 let scenario = {};
 let caracter = { name: "", archetype: "", gamer: "" };
 let timeoutnumber = 0;
+let listonline = [];
+let desc = false;
 let urlbd =
   "https://script.google.com/macros/s/AKfycbx0qqLOgHC6s-GCPHYAEh0-XR4qH0ha9Mnt08W1-4vkg3sZ1xYf_FeUCWmG4k3eiLs3_w/exec";
 //implementação
@@ -609,8 +614,23 @@ opemonline.addEventListener("click", listOnlineFiles);
 function listOnlineFiles() {
   getrequest(urlbd + "?type=list", listOnlineFilesAux);
 }
-function listOnlineFilesAux(result) {
+function listOnlineFilesAux(result, sort = 0, desc = false) {
   listonline = result;
+  if (sort > 0) {
+    listonline.sort((a, b) => {
+      const nameA = a[sort].toUpperCase(); // ignore upper and lowercase
+      const nameB = b[sort].toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        if (desc) return -1;
+        if (!desc) return 1;
+      }
+      if (nameA > nameB) {
+        if (desc) return 1;
+        if (!desc) return -1;
+      }
+      return 0; // names must be equal
+    });
+  }
   console.log(listonline);
   tscen.innerHTML = "";
   listonline.forEach((el) => {
@@ -649,4 +669,25 @@ function opemfileonlineAux(result) {
   loadedscene();
   fillSheets();
   closeonline();
+}
+//ordena tabela
+for (let i = 0; i < btclassfic.length; i++) {
+  btclassfic[i].addEventListener("click", () => {
+    desc = !desc;
+    for (let j = 0; j < btup.length; j++) {
+      if (j != i) {
+        btup[j].classList.add("hiddendiv");
+        btdown[j].classList.add("hiddendiv");
+      } else {
+        if (desc) {
+          btup[j].classList.add("hiddendiv");
+          btdown[j].classList.remove("hiddendiv");
+        } else {
+          btup[j].classList.remove("hiddendiv");
+          btdown[j].classList.add("hiddendiv");
+        }
+      }
+    }
+    listOnlineFilesAux(listonline, i + 1, desc);
+  });
 }

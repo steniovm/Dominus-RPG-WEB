@@ -342,6 +342,11 @@ th {
     background-color: #a9a9a9;
     font-weight: bold;
 }
+
+th:hover{
+    background-color: #87b9a8;
+}
+
 nav {
     background-color: #8FBFAF;
     position: fixed;
@@ -422,4 +427,8 @@ nav * {
     min-width: auto;
     width: fit-content;
     background-color: #b7e9d8
+}
+
+.btup, .btdown {
+    height: 13px;
 }
