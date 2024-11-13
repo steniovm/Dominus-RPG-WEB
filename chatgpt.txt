@@ -1,0 +1,77 @@
+// Função principal para lidar com requisições
+function doPost(e) {
+  try {
+    // Verifica se há um payload (corpo) na requisição
+    if (!e.postData || !e.postData.contents) {
+      return ContentService.createTextOutput("Corpo da requisição não encontrado").setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    // Converte o conteúdo do payload para um objeto JSON
+    const jsonData = JSON.parse(e.postData.contents);
+
+    // Define o nome do arquivo e cria o arquivo no Google Drive
+    const folderId = 'PASTE_YOUR_FOLDER_ID_HERE'; // Coloque o ID da pasta onde o arquivo será salvo
+    const folder = DriveApp.getFolderById(folderId);
+    const fileName = `data_${new Date().toISOString()}.json`;
+    const file = folder.createFile(fileName, JSON.stringify(jsonData, null, 2), MimeType.JSON);
+
+    // Retorna uma resposta indicando sucesso
+    return ContentService.createTextOutput(`Arquivo ${fileName} criado com sucesso!`).setMimeType(ContentService.MimeType.TEXT);
+  } catch (error) {
+    // Em caso de erro, retorna a mensagem de erro
+    return ContentService.createTextOutput(`Erro: ${error.message}`).setMimeType(ContentService.MimeType.TEXT);
+  }
+}
+
+
+// Função principal para lidar com requisições
+function doPost(e) {
+  try {
+    if (!e.postData || !e.postData.contents) {
+      return ContentService.createTextOutput("Corpo da requisição não encontrado").setMimeType(ContentService.MimeType.TEXT);
+    }
+
+    const jsonData = JSON.parse(e.postData.contents);
+
+    // Define o ID da pasta e da planilha onde os dados serão registrados
+    const folderId = 'PASTE_YOUR_FOLDER_ID_HERE'; // Coloque o ID da pasta onde o arquivo será salvo
+    const spreadsheetId = 'PASTE_YOUR_SPREADSHEET_ID_HERE'; // Coloque o ID da sua planilha do Google Sheets
+
+    // Cria o arquivo JSON na pasta do Google Drive
+    const folder = DriveApp.getFolderById(folderId);
+    const fileName = `data_${new Date().toISOString()}.json`;
+    const file = folder.createFile(fileName, JSON.stringify(jsonData, null, 2), MimeType.JSON);
+
+    // Obtém o link do arquivo e outras informações
+    const fileUrl = file.getUrl();
+    const creationDate = new Date();
+
+    // Registra o arquivo na planilha
+    const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
+    sheet.appendRow([fileName, creationDate, fileUrl]);
+
+    return ContentService.createTextOutput(`Arquivo ${fileName} criado e registrado com sucesso!`).setMimeType(ContentService.MimeType.TEXT);
+  } catch (error) {
+    return ContentService.createTextOutput(`Erro: ${error.message}`).setMimeType(ContentService.MimeType.TEXT);
+  }
+}
+
+// Função para lidar com requisições GET e retornar os nomes dos arquivos listados na planilha
+function doGet() {
+  try {
+    // Define o ID da planilha do Google Sheets
+    const spreadsheetId = 'PASTE_YOUR_SPREADSHEET_ID_HERE'; // Coloque o ID da sua planilha do Google Sheets
+    const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
+
+    // Obtém todos os dados da planilha
+    const data = sheet.getDataRange().getValues();
+
+    // Extrai o nome dos arquivos (assumindo que o nome está na primeira coluna)
+    const fileNames = data.slice(1).map(row => row[0]); // Ignora o cabeçalho
+
+    // Retorna a lista de nomes como uma string JSON
+    return ContentService.createTextOutput(JSON.stringify(fileNames)).setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(`Erro: ${error.message}`).setMimeType(ContentService.MimeType.TEXT);
+  }
+}
