@@ -18,7 +18,7 @@ const btup = document.getElementsByClassName("btup");
 const btdown = document.getElementsByClassName("btdown");
 let desc = false;
 let urlbd =
-  "https://script.google.com/macros/s/AKfycbx0qqLOgHC6s-GCPHYAEh0-XR4qH0ha9Mnt08W1-4vkg3sZ1xYf_FeUCWmG4k3eiLs3_w/exec";
+  "https://script.google.com/macros/s/AKfycbytocJA62A3gjJZw0gA3uRK56DdDKGuC63XR0TiM_h3v70qCz8fA7cruHiwfjFEa16ecg/exec";
 let listonline = [];
 formdata.addEventListener("submit", (ev) => {
   ev.preventDefault();
@@ -28,6 +28,13 @@ formdata.addEventListener("submit", (ev) => {
   printobject(datasend);
   sendobject(datasend);
 });
+function submitform() {
+  const data = new FormData(formdata);
+  const datasend = mountobject(data);
+  console.log(datasend);
+  printobject(datasend);
+  sendobject(datasend);
+}
 function mountobject(data) {
   let datasend = {};
   data.forEach((value, key) => {
@@ -72,7 +79,7 @@ function mountobject(data) {
   return datasend;
 }
 function sendobject(object) {
-  fetch("../", {
+  fetch(urlbd, {
     method: "POST",
     headers: {
       Accept: "application/json",
