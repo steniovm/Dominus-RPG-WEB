@@ -86,6 +86,7 @@ function sendobject(object) {
       "Content-Type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify(object),
+    mode: 'no-cors' // Desativa CORS
   }).then((resp) => {
     if (resp.status !== 200) {
       console.log(
