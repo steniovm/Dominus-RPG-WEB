@@ -18,7 +18,7 @@ const btup = document.getElementsByClassName("btup");
 const btdown = document.getElementsByClassName("btdown");
 let desc = false;
 let urlbd =
-  "https://script.google.com/macros/s/AKfycbytocJA62A3gjJZw0gA3uRK56DdDKGuC63XR0TiM_h3v70qCz8fA7cruHiwfjFEa16ecg/exec";
+  "https://script.google.com/macros/s/AKfycbwdokFRNJVbnq_-fH-6UB4XZqixeMn6AqYB7c3xSGR0-feAZCHu8_7W1ewcEwVKbK_Wbg/exec";
 let listonline = [];
 formdata.addEventListener("submit", (ev) => {
   ev.preventDefault();
@@ -86,7 +86,7 @@ function sendobject(object) {
       "Content-Type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify(object),
-    mode: 'no-cors' // Desativa CORS
+    mode: "no-cors", // Desativa CORS
   }).then((resp) => {
     if (resp.status !== 200) {
       console.log(
