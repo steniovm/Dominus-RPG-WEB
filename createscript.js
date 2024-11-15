@@ -90,7 +90,7 @@ function sendobject(object) {
   }).then((resp) => {
     if (resp.status !== 200) {
       console.log(
-        "Looks like there was a problem. Status Code: " + response.status
+        "Looks like there was a problem. Status Code: " + resp.status
       );
       return;
     }
@@ -480,15 +480,15 @@ function closeonline() {
 async function getrequest(url, funcAux) {
   timediv.classList.remove("hiddendiv");
   fetch(url)
-    .then((response) => {
-      if (response.status !== 200) {
+    .then((resp) => {
+      if (resp.status !== 200) {
         console.log(
-          "Looks like there was a problem. Status Code: " + response.status
+          "Looks like there was a problem. Status Code: " + resp.status
         );
-        output.innerText += "\nerro " + response.status + "\n";
+        output.innerText += "\nerro " + resp.status + "\n";
         return;
       }
-      response.json().then((data) => {
+      resp.json().then((data) => {
         funcAux(data.body);
         timediv.classList.add("hiddendiv");
       });
