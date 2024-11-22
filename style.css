@@ -41,7 +41,11 @@ h2, h3 {
     margin: 0;
     text-align: center;
 }
-
+h4 {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+}
 header img{
     height: 100%;
     max-width: 50vw;
@@ -56,10 +60,11 @@ header img{
 }
 
 textarea {
-    background-color: #ffffffcc;
+    background-color: #eeeeeecc;
     width: 80%;
     border-radius: 10px;
     resize: none;
+    border: none;
 }
 
 main {
@@ -92,7 +97,8 @@ button,
 select {
     min-width: 100px;
     border-radius: 10px;
-    background-color: #ffffffcc;
+    background-color: #eeeeeecc;
+    border: none;
     text-align:start;
     width: fit-content;
     cursor: pointer;
@@ -103,7 +109,15 @@ select{
 .btpress {
     min-width: auto;
     border: none;
-    box-shadow: #578978 5px 5px 5px;
+    box-shadow: #578978 2px 2px 2px;
+    background-color: #f27a5288;
+}
+.btpress:hover{
+    background-color: #e26a42;
+}
+.btpress:active{
+    background-color: #e26a4268;
+    box-shadow: inset #97a968 2px 2px 2px;
 }
 
 input[type=text],
@@ -126,12 +140,12 @@ p {
     left: auto;
     top: 10px;
     overflow: auto;
-    border: 1px solid;
+    /*border: 1px solid;*/
     border-radius: 5px;
     width: min-content;
     min-width: 360px;
     max-width: 650px;
-    background-color: #cf9fabe6;
+    background-color: #de6281d6;
     max-height: 90vh;
     padding: 0.5em 1em;
 }
@@ -217,12 +231,28 @@ fieldset{
 
 .btdice {
     min-height: 0;
-    min-width: 0;
+    min-width: 43px;
     padding: 0;
-    width: 35px;
-    background: transparent;
+    width: 43px;
+    background-color: #f27a5288;
+    box-shadow: #578978 2px 2px 2px;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    font-weight: bold;
+}
+#gameplay .btdice {
+    width: 100%;
+}
+.btdice:hover{
+    background-color: #e26a42;
+}
+.btdice:active{
+    background-color: #e26a4268;
+    box-shadow: inset #97a968 2px 2px 2px;
 }
 
 .twodices{
@@ -231,28 +261,58 @@ fieldset{
 
 #gameplay {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: normal;
 }
 
 #gameplay>div, .desav {
-    width: 20%;
+    width: 99%;
     min-width: 160px;
-    max-width: 300px;
+    /*max-width: 300px;*/
     border: 2px groove #c0c0c0;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    padding: 0 0 0 5px;
+    align-items: center;
+    padding: 0 0 0 1px;
 }
-.desav{
-    width: 95%;
+#btsactions{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#gameplay h3{
+    font-size: medium;
+    font-weight: normal;
+}
+#baction, #bnaction, #fcaracter{
+    font-weight: bold;
+    width: 50%;
+    min-width: 150px;
+    text-align: center;
+}
+#fcaracter{
+    width: 100%;
+}
+.desav, .dilem{
+    width: 99%;
     min-width: unset;
     max-width: unset;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border: none;
+}
+.desav>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 33%;
 }
 
 table {
@@ -290,6 +350,10 @@ td {
     display: flex;
     flex-direction: row;
     width: 100%;
+}
+.dilem>.intext{
+    width: 49%;
+    min-width: 100px;
 }
 
 .intebt {

@@ -132,31 +132,47 @@ function loadedscene() {
       stylefomat.innerHTML = `#historydiv{color:${scenario.TextColor}}
       #historytext{background-color: ${scenario.BackgroundColor}}`;
   if (scenario.OwnRule) {
-    scenario.OwnRule.forEach((el, ind) => {
-      const div = document.createElement("div");
-      const h3 = document.createElement("h3");
-      const article = document.createElement("article");
-      div.classList.add("rule");
-      h3.innerText = "Regra X" + (ind + 1) + ": " + el.Name;
-      article.innerText = el.description;
-      div.appendChild(h3);
-      div.appendChild(article);
-      rulesx.appendChild(div);
-    });
-    if (scenario.Author) {
-      scenarioauthor.innerHTML = scenario.Author;
-    }
-    if (scenario.imgURL) {
-      scenarioimg.src = scenario.imgURL;
-    }
-    if (scenario.OtherNotes) {
-      scenarionotes.innerHTML = scenario.OtherNotes;
-    }
-    if (scenario.textURL) {
-      cover.href = scenario.textURL;
-    }
+    fillRules();
   }
   showmessage("Carregado cenário: " + scenario.Name);
+  showdesc.innerHTML = scenario.Ambiance;
+  scenariondesc.innerHTML = scenario.Ambiance;
+  showRules();
+}
+function fillRules() {
+  scenario.OwnRule.forEach((el, ind) => {
+    const div = document.createElement("div");
+    const divs = document.createElement("div");
+    const h3 = document.createElement("h3");
+    const h3s = document.createElement("h3");
+    const article = document.createElement("article");
+    const articles = document.createElement("article");
+    const brs = document.createElement("br");
+    div.classList.add("rule");
+    h3.innerText = "Regra X" + (ind + 1) + ": " + el.Name;
+    h3s.innerText = "Regra X" + (ind + 1) + ": " + el.Name;
+    article.innerText = el.description;
+    articles.innerText = el.description;
+    div.appendChild(h3);
+    divs.appendChild(h3s);
+    div.appendChild(article);
+    divs.appendChild(articles);
+    divs.appendChild(brs);
+    rulesx.appendChild(div);
+    showrules.appendChild(divs);
+  });
+  if (scenario.Author) {
+    scenarioauthor.innerHTML = scenario.Author;
+  }
+  if (scenario.imgURL) {
+    scenarioimg.src = scenario.imgURL;
+  }
+  if (scenario.OtherNotes) {
+    scenarionotes.innerHTML = scenario.OtherNotes;
+  }
+  if (scenario.textURL) {
+    cover.href = scenario.textURL;
+  }
 }
 //Mostra e oculta capa do cenário
 scenariohidden.addEventListener("click", () => {
@@ -249,6 +265,13 @@ baction.addEventListener("click", () => {
   addParag(caracter.name + ": " + textaction.value);
   showmessage(caracter.name + " fez/disse: '" + textaction.value + "'");
   addRow();
+  textaction.value = "";
+});
+bnaction.addEventListener("click", () => {
+  addParag("Narrador: " + textaction.value);
+  showmessage("'" + textaction.value + "'");
+  addRow();
+  textaction.value = "";
 });
 //sorteia desafio
 bdefiance.addEventListener("click", () => {
@@ -428,6 +451,9 @@ function showmessage(message) {
   showmen.innerHTML = message;
   showmodal(0);
   setTimeout(closemodal, 5000);
+}
+function showRules() {
+  showrules.classList.remove("hiddendiv");
 }
 //preenche tabelas do modal ao carregar cenário
 function fillSheets() {
