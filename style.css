@@ -9,7 +9,7 @@ html{
 }
 
 body {
-    background-color: #9FCFBF;
+    background-color: #EEEEEE;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,11 +60,22 @@ header img{
 }
 
 textarea {
-    background-color: #eeeeeecc;
+    background-color: #cccccccc;
     width: 80%;
+    border:dashed 1px #555555;
     border-radius: 10px;
     resize: none;
     border: none;
+}
+textarea:hover,
+textarea:focus,
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=url]:hover,
+input[type=url]:focus,
+select:hover,
+select:focus{
+    background-color: #aaddaacc;
 }
 
 main {
@@ -97,8 +108,8 @@ button,
 select {
     min-width: 100px;
     border-radius: 10px;
-    background-color: #eeeeeecc;
-    border: none;
+    background-color: #cccccccc;
+    border:dashed 1px #555555;
     text-align:start;
     width: fit-content;
     cursor: pointer;
@@ -110,7 +121,7 @@ select{
     min-width: auto;
     border: none;
     box-shadow: #578978 2px 2px 2px;
-    background-color: #f27a5288;
+    background-color: #8FBFAF88;
 }
 .btpress:hover{
     background-color: #e26a42;
@@ -150,14 +161,14 @@ p {
     padding: 0.5em 1em;
 }
 #timediv{
-    width: 50px;
+    width: 30px;
     min-width: fit-content;
     background-color: transparent;
     border: none;
     top:20vh;
 }
 #timediv > img {
-    width: 50px;
+    width: 30px;
 }
 .showmodal{
     display: block;
@@ -210,6 +221,7 @@ fieldset{
 #historytext {
     max-height: 25vh;
     overflow: auto;
+    border-radius: 20px;
 }
 #historytext p {
     display: inline;
@@ -234,7 +246,7 @@ fieldset{
     min-width: 43px;
     padding: 0;
     width: 43px;
-    background-color: #f27a5288;
+    background-color: #8FBFAF88;
     box-shadow: #578978 2px 2px 2px;
     border: none;
     cursor: pointer;
@@ -363,6 +375,10 @@ td {
     background-image: url("./imgs/microphone-off.svg");
     background-size: cover;
     cursor: pointer;
+    border-radius: 20%;
+}
+.intebt:hover {
+    background-color: #9999ff;
 }
 .intebtpress{
     background-image: url("./imgs/microphone-on.svg");
@@ -495,4 +511,15 @@ nav * {
 
 .btup, .btdown {
     height: 13px;
+}
+
+* ::-webkit-scrollbar-track {
+    background-color: #DEF281d6;
+}
+* ::-webkit-scrollbar {
+    width: 10px;
+}
+* ::-webkit-scrollbar-thumb {
+    background: #Cf7F2F;
+    border-radius: 5px;
 }

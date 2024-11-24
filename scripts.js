@@ -169,6 +169,9 @@ function fillRules() {
   }
   if (scenario.OtherNotes) {
     scenarionotes.innerHTML = scenario.OtherNotes;
+    const otNotes = document.createElement("article");
+    otNotes.innerHTML = scenario.OtherNotes;
+    showrules.appendChild(otNotes);
   }
   if (scenario.textURL) {
     cover.href = scenario.textURL;
