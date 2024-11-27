@@ -553,3 +553,7 @@ for (let i = 0; i < btclassfic.length; i++) {
     listOnlineFilesAux(listonline, i + 1, desc);
   });
 }
+//modo escuro
+dlmode.addEventListener("click", () => {
+  darkmode.disabled = !darkmode.disabled;
+});

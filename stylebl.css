@@ -1,0 +1,133 @@
+body {
+    background-color: #222222;
+    color: #ddd;
+}
+a:link{
+    color:#2ecaca;
+}
+a:visited{
+    color:#a83bc9;
+}
+header {
+    background-color: #448F4488;
+}
+
+input,
+button,
+select,
+textarea {
+    background-color: #cccccccc;
+    border:dashed 1px #555555;
+}
+
+textarea:hover,
+textarea:focus,
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=url]:hover,
+input[type=url]:focus,
+select:hover,
+select:focus{
+    background-color: #88aa88cc;
+}
+
+.btpress {
+    box-shadow: #578978 2px 2px 2px;
+    background-color: #8FBFAF88;
+}
+.btpress:hover{
+    background-color: #721a12;
+}
+.btpress:active{
+    background-color: #e26a4268;
+    box-shadow: inset #374918 2px 2px 2px;
+}
+
+.modal{
+    background-color: #e26a4268;
+}
+.stepdiv {
+    border: 2px groove #202020;
+    border-radius: 5px;
+}
+
+.btdice {
+    background-color: #1F4F3F88;
+    box-shadow: #073928 2px 2px 2px;
+}
+
+.btdice:hover{
+    background-color: #88aa88cc;
+}
+.btdice:active{
+    background-color: #e26a4268;
+    box-shadow: inset #374918 2px 2px 2px;
+}
+
+#gameplay>div, .desav {
+    border: 2px groove #303030;
+}
+td {
+    background-color: #ffffff33;
+}
+.intebt:hover {
+    background-color: #9999ff;
+}
+footer {
+    min-width: 90%;
+    background-color: #344741cc;
+    color: #ddd;
+}
+th {
+    background-color: #494949;
+}
+
+th:hover{
+    background-color: #477968;
+}
+
+nav {
+    background-color: #344741cc;
+}
+
+.menu {
+    border: 2px groove #477968;
+}
+
+.menu li a {
+    color: #ddd;
+}
+
+.menu li a:hover {
+    background: #ddd;
+    color: #000;
+    text-shadow: 0px 0px 5px #000;
+}
+
+.menu li ul {
+    background-color: #477968;
+}
+
+.menu li ul li {
+    border: 2px groove #477968;
+}
+#modalonline tr:hover{
+    background-color: #477968;
+}
+#modalonline tr:active{
+    background-color: #477968;
+}
+#modalonline td > button{
+    background-color: #477968;
+}
+
+* ::-webkit-scrollbar-track {
+    background-color: #5E7201d6;
+}
+* ::-webkit-scrollbar-thumb {
+    background: #5f1F0F;
+}
+
+#dlmode>img {
+    background-color: #ffffff;
+}

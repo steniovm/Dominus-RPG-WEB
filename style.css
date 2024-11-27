@@ -528,3 +528,9 @@ nav * {
     background: #Cf7F2F;
     border-radius: 5px;
 }
+
+#dlmode>img {
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+}
