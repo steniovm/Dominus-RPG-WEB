@@ -4,7 +4,7 @@
 
 <p>Para Jogar abra o arquivo index.html</p>
 <br>
-<p>É necessário ter cenários em formato JSOM para jogar, voce pode criar seus próprios cenários (utilizando o gerador de cenário scenariocreate.html), ou baixar os cenários publicos on-line na <a href="https://drive.google.com/drive/folders/1yCx5s9EAQGN5evy2Ff7jkSUi_O8VI71A?usp=sharing">nuvem da aplicação</a>.
+<p>É necessário ter cenários em formato JSOM para jogar, voce pode criar seus próprios cenários (utilizando o gerador de cenário scenariocreate.html), ou baixar os cenários publicos on-line no <a href="https://drive.google.com/drive/folders/1yCx5s9EAQGN5evy2Ff7jkSUi_O8VI71A?usp=sharing">repositório da aplicação</a>.
 <br>
 <a href="https://arquivorpg.com.br/dominus/"><img src="./imgs/logo-dominus.png"></a>
 <br><br>

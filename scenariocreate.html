@@ -97,175 +97,200 @@
             action="https://script.google.com/macros/s/AKfycby0ubBEDPyGRU-ubClB6Up1x_g06Xmgjf6JLYVLxPwr6AehZPy3Dh29Z15qw-Tn9r48-Q/exec"
             method="post">
             <hr />
-            <h3>informações Gerais</h3>
-            <label title="Nome que o cenário (e seu arquivo) terá">Titulo do Cenário</label>
-            <input type="text" name="Name" title="Nome que o cenário (e seu arquivo) terá" required>
-            <label title="O nome de quem elaborou o cenário (seu o de quem voce está copiando)">Autor</label>
-            <input type="text" name="Author" value="Anônimo"
-                title="Preenchimento obrigatório, em caso de autor desconhecido mantenho o nome como 'Anônimo' "
-                required>
-            <br /><br />
-            <label title="Breve descrição do cénario">Ambientação</label>
-            <textarea id="inAmbiance" type="text" name="Ambiance" class="inlarge" title="Preenchimento obrigatório"
-                required></textarea>
-            <label title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">Palavras
-                Chave</label>
-            <div id="tags" title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">
-                <input type="text" class="texttables" name="Tags">
-            </div>
-            <button id="moretags" class="btpress">Mais tags</button>
-            <br />
-            <label title="Cores do cenário">Cores</label>
-            <div class="divcolor">
-                <div>
-                    <label title="Cor de fundo da tela do cenário e das histórias criadas sobre ele">Cor de
-                        fundo</label>
-                    <input type="color" name="BackgroundColor"
-                        title="Cor de fundo da tela do cenário e das histórias criadas sobre ele" value="#9FCFBF">
-                </div>
-                <div>
-                    <label title="Cor do texto usado no cenário e nas histórias criadas sobre ele">Cor de texto</label>
-                    <input type="color" name="TextColor"
-                        title="Cor do texto usado no cenário e nas histórias criadas sobre ele" value="#000000">
-                </div>
-            </div>
-            <br />
-            <hr />
-            <label title="Imagem que ilustará a capa do cenário">Imagem de Capa</label>
-            <div>
-                <label title="Caso utilize uma imagem disponivel em algum site na internet">URL da imagem</label>
-                <input type="url" id="imgURL" name="imgURL"
-                    title="Caso utilize uma imagem disponivel em algum site na internet" placeholder="https://..."
+            <details>
+                <summary title="Resumo geral">Informações Gerais</summary>
+                <br />
+                <label title="Nome que o cenário (e seu arquivo) terá">Titulo do Cenário</label>
+                <input type="text" name="Name" title="Nome que o cenário (e seu arquivo) terá" required>
+                <label title="O nome de quem elaborou o cenário (seu o de quem voce está copiando)">Autor</label>
+                <input type="text" name="Author" value="Anônimo"
+                    title="Preenchimento obrigatório, em caso de autor desconhecido mantenho o nome como 'Anônimo' "
                     required>
+                <br /><br />
+                <label title="Breve descrição do cénario">Ambientação</label>
+                <textarea id="inAmbiance" type="text" name="Ambiance" class="inlarge" title="Preenchimento obrigatório"
+                    required></textarea>
                 <label
-                    title="Caso prefira utilizar uma imagem que tenha em sua maquina voce pode fazer upload, mas há um limite de tamanho pois ela será incorporada ao arquivo do cenário"><strong>ou</strong>
-                    upload (max 1 MB)</label>
-                <input type="file" id="imgFile" accept="image/*"
-                    title="Caso prefira utilizar uma imagem que tenha em sua maquina voce pode fazer upload, mas há um limite de tamanho pois ela será incorporada ao arquivo do cenário">
-                <label title="Prévia da imagem de capa">Preview</label>
-                <img id="previewcover" />
-            </div>
-            <label title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">Arquivo Texto</label>
-            <input type="url" placeholder="https://..." name="textURL"
-                title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">
-            <hr />
-            <h3 title="tabela para criação de personagem do jogador">Personagem</h3>
-            <label title="tabela para criação de personagem do jogador">Arquétipos</label>
-            <div title="tabela para criação de personagem do jogador">
-                <input type="text" class="texttables" name="Archetypes" required>
-                <input type="text" class="texttables" name="Archetypes">
-                <input type="text" class="texttables" name="Archetypes">
-                <input type="text" class="texttables" name="Archetypes">
-                <input type="text" class="texttables" name="Archetypes">
-                <input type="text" class="texttables" name="Archetypes">
-            </div>
-            <hr />
-            <h3 title="tabela para criação de aventura">Trama</h3>
-            <label title="tabela para criação de aventura">Algo aconteceu...</label>
-            <div title="tabela para criação de aventura">
-                <input type="text" class="texttables" name="Occurrence" required>
-                <input type="text" class="texttables" name="Occurrence">
-                <input type="text" class="texttables" name="Occurrence">
-                <input type="text" class="texttables" name="Occurrence">
-                <input type="text" class="texttables" name="Occurrence">
-                <input type="text" class="texttables" name="Occurrence">
-            </div>
-            <label title="tabela para criação de aventura">Você precisa...</label>
-            <div title="tabela para criação de aventura">
-                <input type="text" class="texttables" name="Need" required>
-                <input type="text" class="texttables" name="Need">
-                <input type="text" class="texttables" name="Need">
-                <input type="text" class="texttables" name="Need">
-                <input type="text" class="texttables" name="Need">
-                <input type="text" class="texttables" name="Need">
-            </div>
-            <label title="tabela para criação de aventura">Senão...</label>
-            <div title="tabela para criação de aventura">
-                <input type="text" class="texttables" name="Otherwise" required>
-                <input type="text" class="texttables" name="Otherwise">
-                <input type="text" class="texttables" name="Otherwise">
-                <input type="text" class="texttables" name="Otherwise">
-                <input type="text" class="texttables" name="Otherwise">
-                <input type="text" class="texttables" name="Otherwise">
-            </div>
-            <hr />
-            <h3 title="tabela para o desenrolar da história">Cenas</h3>
-            <label title="tabela para o desenrolar da história">Lugares</label>
-            <div title="tabela para o desenrolar da história">
-                <input type="text" class="texttables" name="Places" required>
-                <input type="text" class="texttables" name="Places">
-                <input type="text" class="texttables" name="Places">
-                <input type="text" class="texttables" name="Places">
-                <input type="text" class="texttables" name="Places">
-                <input type="text" class="texttables" name="Places">
-            </div>
-            <label title="tabela para o desenrolar da história">Personagens</label>
-            <div title="tabela para o desenrolar da história">
-                <input type="text" class="texttables" name="Characters" required>
-                <input type="text" class="texttables" name="Characters">
-                <input type="text" class="texttables" name="Characters">
-                <input type="text" class="texttables" name="Characters">
-                <input type="text" class="texttables" name="Characters">
-                <input type="text" class="texttables" name="Characters">
-            </div>
-            <label title="tabela para o desenrolar da história">Eventos</label>
-            <div title="tabela para o desenrolar da história">
-                <input type="text" class="texttables" name="Events" required>
-                <input type="text" class="texttables" name="Events">
-                <input type="text" class="texttables" name="Events">
-                <input type="text" class="texttables" name="Events">
-                <input type="text" class="texttables" name="Events">
-                <input type="text" class="texttables" name="Events">
-            </div>
-            <hr />
-            <h3 title="tabela para idéias que podem ajudar a elaborar melhor a história">Banco de Idéias</h3>
-            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Assunto</label>
-            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
-                <input type="text" class="texttables" name="Subject" required>
-                <input type="text" class="texttables" name="Subject">
-                <input type="text" class="texttables" name="Subject">
-                <input type="text" class="texttables" name="Subject">
-                <input type="text" class="texttables" name="Subject">
-                <input type="text" class="texttables" name="Subject">
-            </div>
-            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Ação</label>
-            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
-                <input type="text" class="texttables" name="Action" required>
-                <input type="text" class="texttables" name="Action">
-                <input type="text" class="texttables" name="Action">
-                <input type="text" class="texttables" name="Action">
-                <input type="text" class="texttables" name="Action">
-                <input type="text" class="texttables" name="Action">
-            </div>
-            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Coisa</label>
-            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
-                <input type="text" class="texttables" name="Thing" required>
-                <input type="text" class="texttables" name="Thing">
-                <input type="text" class="texttables" name="Thing">
-                <input type="text" class="texttables" name="Thing">
-                <input type="text" class="texttables" name="Thing">
-                <input type="text" class="texttables" name="Thing">
-            </div>
-            <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Qualidade</label>
-            <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
-                <input type="text" class="texttables" name="Quality" required>
-                <input type="text" class="texttables" name="Quality">
-                <input type="text" class="texttables" name="Quality">
-                <input type="text" class="texttables" name="Quality">
-                <input type="text" class="texttables" name="Quality">
-                <input type="text" class="texttables" name="Quality">
-            </div>
-            <hr />
-            <h3 title="Regras especificas para este cenário">Regras X</h3>
-            <div id="rules" title="Regras especificas para este cenário">
-                <div class="divrule">
-                    <label>Nome da regra</label>
-                    <input type="text" name="OwnRuleName">
-                    <label>Descrição da regra</label>
-                    <input type="text" name="OwnRuleNameDescription">
+                    title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">Palavras
+                    Chave</label>
+                <div id="tags"
+                    title="Termos que possam ser usados para encontrar e/ou identificar o cénario em uma busca">
+                    <input type="text" class="texttables" name="Tags">
                 </div>
-            </div>
-            <button id="morerules" class="btpress">Mais regras</button>
+                <button id="moretags" class="btpress">Mais tags</button>
+                <br />
+                <label title="Cores do cenário">Cores</label>
+                <div class="divcolor">
+                    <div>
+                        <label title="Cor de fundo da tela do cenário e das histórias criadas sobre ele">Cor de
+                            fundo</label>
+                        <input type="color" name="BackgroundColor"
+                            title="Cor de fundo da tela do cenário e das histórias criadas sobre ele" value="#9FCFBF">
+                    </div>
+                    <div>
+                        <label title="Cor do texto usado no cenário e nas histórias criadas sobre ele">Cor de
+                            texto</label>
+                        <input type="color" name="TextColor"
+                            title="Cor do texto usado no cenário e nas histórias criadas sobre ele" value="#000000">
+                    </div>
+                </div>
+            </details>
+            <hr />
+            <details>
+                <summary title="Imagem de capa e link para arquivo de referencia">Capa</summary>
+                <br>
+                <label title="Imagem que ilustará a capa do cenário">Imagem de Capa</label>
+                <div>
+                    <label title="Caso utilize uma imagem disponivel em algum site na internet">URL da imagem</label>
+                    <input type="url" id="imgURL" name="imgURL"
+                        title="Caso utilize uma imagem disponivel em algum site na internet" placeholder="https://..."
+                        required>
+                    <label
+                        title="Caso prefira utilizar uma imagem que tenha em sua maquina voce pode fazer upload, mas há um limite de tamanho pois ela será incorporada ao arquivo do cenário"><strong>ou</strong>
+                        upload (max 1 MB)</label>
+                    <input type="file" id="imgFile" accept="image/*"
+                        title="Caso prefira utilizar uma imagem que tenha em sua maquina voce pode fazer upload, mas há um limite de tamanho pois ela será incorporada ao arquivo do cenário">
+                    <label title="Prévia da imagem de capa">Preview</label>
+                    <img id="previewcover" />
+                </div>
+                <label title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">Arquivo Texto</label>
+                <input type="url" placeholder="https://..." name="textURL"
+                    title="url do arquivo para leitura, caso exista, (pdf, docx, html, etc...)">
+            </details>
+            <hr />
+            <details>
+                <summary title="tabela para criação de personagem do jogador">Personagem</summary>
+                <br />
+                <label title="tabela para criação de personagem do jogador">Arquétipos</label>
+                <div title="tabela para criação de personagem do jogador">
+                    <input type="text" class="texttables" name="Archetypes" required>
+                    <input type="text" class="texttables" name="Archetypes">
+                    <input type="text" class="texttables" name="Archetypes">
+                    <input type="text" class="texttables" name="Archetypes">
+                    <input type="text" class="texttables" name="Archetypes">
+                    <input type="text" class="texttables" name="Archetypes">
+                </div>
+            </details>
+            <hr />
+            <details>
+                <summary title="tabela para criação de aventura">Trama</summary>
+                <br />
+                <label title="tabela para criação de aventura">Algo aconteceu...</label>
+                <div title="tabela para criação de aventura">
+                    <input type="text" class="texttables" name="Occurrence" required>
+                    <input type="text" class="texttables" name="Occurrence">
+                    <input type="text" class="texttables" name="Occurrence">
+                    <input type="text" class="texttables" name="Occurrence">
+                    <input type="text" class="texttables" name="Occurrence">
+                    <input type="text" class="texttables" name="Occurrence">
+                </div>
+                <label title="tabela para criação de aventura">Você precisa...</label>
+                <div title="tabela para criação de aventura">
+                    <input type="text" class="texttables" name="Need" required>
+                    <input type="text" class="texttables" name="Need">
+                    <input type="text" class="texttables" name="Need">
+                    <input type="text" class="texttables" name="Need">
+                    <input type="text" class="texttables" name="Need">
+                    <input type="text" class="texttables" name="Need">
+                </div>
+                <label title="tabela para criação de aventura">Senão...</label>
+                <div title="tabela para criação de aventura">
+                    <input type="text" class="texttables" name="Otherwise" required>
+                    <input type="text" class="texttables" name="Otherwise">
+                    <input type="text" class="texttables" name="Otherwise">
+                    <input type="text" class="texttables" name="Otherwise">
+                    <input type="text" class="texttables" name="Otherwise">
+                    <input type="text" class="texttables" name="Otherwise">
+                </div>
+            </details>
+            <hr />
+            <details>
+                <summary title="tabela para o desenrolar da história">Cenas</summary>
+                <br />
+                <label title="tabela para o desenrolar da história">Lugares</label>
+                <div title="tabela para o desenrolar da história">
+                    <input type="text" class="texttables" name="Places" required>
+                    <input type="text" class="texttables" name="Places">
+                    <input type="text" class="texttables" name="Places">
+                    <input type="text" class="texttables" name="Places">
+                    <input type="text" class="texttables" name="Places">
+                    <input type="text" class="texttables" name="Places">
+                </div>
+                <label title="tabela para o desenrolar da história">Personagens</label>
+                <div title="tabela para o desenrolar da história">
+                    <input type="text" class="texttables" name="Characters" required>
+                    <input type="text" class="texttables" name="Characters">
+                    <input type="text" class="texttables" name="Characters">
+                    <input type="text" class="texttables" name="Characters">
+                    <input type="text" class="texttables" name="Characters">
+                    <input type="text" class="texttables" name="Characters">
+                </div>
+                <label title="tabela para o desenrolar da história">Eventos</label>
+                <div title="tabela para o desenrolar da história">
+                    <input type="text" class="texttables" name="Events" required>
+                    <input type="text" class="texttables" name="Events">
+                    <input type="text" class="texttables" name="Events">
+                    <input type="text" class="texttables" name="Events">
+                    <input type="text" class="texttables" name="Events">
+                    <input type="text" class="texttables" name="Events">
+                </div>
+            </details>
+            <hr />
+            <details>
+                <summary title="tabela para idéias que podem ajudar a elaborar melhor a história">Banco de Idéias
+                </summary>
+                <br />
+                <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Assunto</label>
+                <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                    <input type="text" class="texttables" name="Subject" required>
+                    <input type="text" class="texttables" name="Subject">
+                    <input type="text" class="texttables" name="Subject">
+                    <input type="text" class="texttables" name="Subject">
+                    <input type="text" class="texttables" name="Subject">
+                    <input type="text" class="texttables" name="Subject">
+                </div>
+                <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Ação</label>
+                <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                    <input type="text" class="texttables" name="Action" required>
+                    <input type="text" class="texttables" name="Action">
+                    <input type="text" class="texttables" name="Action">
+                    <input type="text" class="texttables" name="Action">
+                    <input type="text" class="texttables" name="Action">
+                    <input type="text" class="texttables" name="Action">
+                </div>
+                <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Coisa</label>
+                <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                    <input type="text" class="texttables" name="Thing" required>
+                    <input type="text" class="texttables" name="Thing">
+                    <input type="text" class="texttables" name="Thing">
+                    <input type="text" class="texttables" name="Thing">
+                    <input type="text" class="texttables" name="Thing">
+                    <input type="text" class="texttables" name="Thing">
+                </div>
+                <label title="tabela para idéias que podem ajudar a elaborar melhor a história">Qualidade</label>
+                <div title="tabela para idéias que podem ajudar a elaborar melhor a história">
+                    <input type="text" class="texttables" name="Quality" required>
+                    <input type="text" class="texttables" name="Quality">
+                    <input type="text" class="texttables" name="Quality">
+                    <input type="text" class="texttables" name="Quality">
+                    <input type="text" class="texttables" name="Quality">
+                    <input type="text" class="texttables" name="Quality">
+                </div>
+            </details>
+            <hr />
+            <details>
+                <summary title="Regras especificas para este cenário">Regras X</summary>
+                <br />
+                <div id="rules" title="Regras especificas para este cenário">
+                    <div class="divrule">
+                        <label>Nome da regra</label>
+                        <input type="text" name="OwnRuleName">
+                        <label>Descrição da regra</label>
+                        <input type="text" name="OwnRuleNameDescription">
+                    </div>
+                </div>
+                <button id="morerules" class="btpress">Mais regras</button>
+            </details>
             <hr />
             <label title="qualquer informação que não esteja em outros campos, como referencias ou apoiadores">Outras
                 informações</label>

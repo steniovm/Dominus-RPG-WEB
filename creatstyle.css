@@ -35,7 +35,7 @@ label {
 }
 
 .texttables {
-  width: 32% !important;
+  /*width: 32% !important;*/
   min-width: 145px;
 }
 
@@ -119,4 +119,29 @@ p {
 
 .rule * {
   display: inline;
+}
+
+details summary{
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+details summary::after {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  float: right;
+  transform: rotate(-90deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(65, 84, 98)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-position: right center;
+  background-size: 1rem auto;
+  background-repeat: no-repeat;
+  content:"";
+}
+
+details[open]>summary::after {
+  transform: rotate(0)
 }
