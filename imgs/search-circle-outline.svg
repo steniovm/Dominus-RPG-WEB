@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg class="ionicon" viewBox="0 0 392 392" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 196.131 20 C 60.747 20 -23.868 166.667 43.824 284 C 111.516 401.333 280.746 401.333 348.437 284 C 363.874 257.245 372 226.894 372 196 C 372 98.798 293.26 20 196.131 20 Z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
+  <path d="M 172.149 100 C 116.764 100 82.149 160 109.841 208 C 137.533 256 206.764 256 234.456 208 C 240.77 197.055 244.095 184.639 244.095 172 C 244.095 132.235 211.884 100 172.149 100 Z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/>
+  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M 223.75 223.64 L 276.071 276"/>
+</svg>

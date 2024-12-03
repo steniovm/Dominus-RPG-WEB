@@ -722,3 +722,16 @@ for (let i = 0; i < btclassfic.length; i++) {
 dlmode.addEventListener("click", () => {
   darkmode.disabled = !darkmode.disabled;
 });
+
+//tirar destaque do menu scenário
+let timescen = setInterval(() => {
+  if (scenario.Name) {
+    clearInterval(timescen);
+    menuscen.classList.remove("emphasis");
+  } else {
+    menuscen.classList.add("emphasis");
+    setTimeout(() => {
+      menuscen.classList.remove("emphasis");
+    }, 3000);
+  }
+}, 6000);

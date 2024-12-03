@@ -534,3 +534,21 @@ nav * {
     height: 15px;
     width: 15px;
 }
+
+.emphasis {
+    animation-duration: 0.5s;
+    animation-name: faderepte;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes faderepte {
+    from {
+      text-shadow: 2px 2px 0 #fff;
+    }
+    to {
+      text-shadow: 6px 6px 5px #ff5555,
+                  -6px -6px 5px #ff5555,
+                  -6px 6px 5px #ff5555,
+                   6px -6px 5px #ff5555;
+    }
+}
