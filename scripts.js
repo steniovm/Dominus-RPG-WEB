@@ -33,6 +33,7 @@ let caracter = { name: "", archetype: "", gamer: "" };
 let timeoutnumber = 0;
 let listonline = [];
 let desc = false;
+let sortlist = 0;
 let urlbd =
   "https://script.google.com/macros/s/AKfycbwdokFRNJVbnq_-fH-6UB4XZqixeMn6AqYB7c3xSGR0-feAZCHu8_7W1ewcEwVKbK_Wbg/exec";
 //configura links do menu
@@ -642,6 +643,9 @@ function listOnlineFiles() {
 }
 function listOnlineFilesAux(result, sort = 0, desc = false) {
   listonline = result;
+  listSort(listonline, sort, desc);
+}
+function listSort(listonline, sort, desc) {
   if (sort > 0) {
     listonline.sort((a, b) => {
       const nameA = a[sort].toUpperCase(); // ignore upper and lowercase
@@ -714,7 +718,11 @@ for (let i = 0; i < btclassfic.length; i++) {
         }
       }
     }
-    listOnlineFilesAux(listonline, i + 1, desc);
+    sortlist = i + 1;
+    listOnlineFilesAux(listonline, sortlist, desc);
+    if (wordsearche.value) {
+      listSort(filterList(wordsearche.value), sortlist, desc);
+    }
   });
 }
 
@@ -735,3 +743,22 @@ let timescen = setInterval(() => {
     }, 3000);
   }
 }, 6000);
+
+//filtro de pesquisa
+// campo wordsearche botão submitwordsearche
+let timefilter;
+wordsearche.addEventListener("input", enterwordsearche);
+submitwordsearche.addEventListener("click", enterwordsearche);
+
+function enterwordsearche() {
+  clearTimeout(timefilter);
+  timefilter = setTimeout(() => {
+    listSort(filterList(wordsearche.value), sortlist, desc);
+  }, 500);
+}
+
+function filterList(word) {
+  return listonline.filter((el) =>
+    el.toString().toLowerCase().includes(word.toLowerCase())
+  );
+}

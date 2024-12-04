@@ -17,6 +17,7 @@ const btclassfic = document.getElementsByClassName("btclassfic");
 const btup = document.getElementsByClassName("btup");
 const btdown = document.getElementsByClassName("btdown");
 let desc = false;
+let sortlist = 0;
 let urlbd =
   "https://script.google.com/macros/s/AKfycbwdokFRNJVbnq_-fH-6UB4XZqixeMn6AqYB7c3xSGR0-feAZCHu8_7W1ewcEwVKbK_Wbg/exec";
 let listonline = [];
@@ -502,6 +503,9 @@ function listOnlineFiles() {
 }
 function listOnlineFilesAux(result, sort = 0, desc = false) {
   listonline = result;
+  listSort(listonline, sort, desc);
+}
+function listSort(listonline, sort, desc) {
   if (sort > 0) {
     listonline.sort((a, b) => {
       const nameA = a[sort].toUpperCase(); // ignore upper and lowercase
@@ -551,9 +555,31 @@ for (let i = 0; i < btclassfic.length; i++) {
       }
     }
     listOnlineFilesAux(listonline, i + 1, desc);
+    if (wordsearche.value) {
+      listSort(filterList(wordsearche.value), sortlist, desc);
+    }
   });
 }
 //modo escuro
 dlmode.addEventListener("click", () => {
   darkmode.disabled = !darkmode.disabled;
 });
+
+//filtro de pesquisa
+// campo wordsearche botão submitwordsearche
+let timefilter;
+wordsearche.addEventListener("input", enterwordsearche);
+submitwordsearche.addEventListener("click", enterwordsearche);
+
+function enterwordsearche() {
+  clearTimeout(timefilter);
+  timefilter = setTimeout(() => {
+    listSort(filterList(wordsearche.value), sortlist, desc);
+  }, 500);
+}
+
+function filterList(word) {
+  return listonline.filter((el) =>
+    el.toString().toLowerCase().includes(word.toLowerCase())
+  );
+}

@@ -156,12 +156,11 @@ p {
     left: auto;
     top: 10px;
     overflow: auto;
-    /*border: 1px solid;*/
     border-radius: 5px;
     width: min-content;
     min-width: 360px;
     max-width: 650px;
-    background-color: #de6281d6;
+    background-color: #ffffeeee;
     max-height: 90vh;
     padding: 0.5em 1em;
 }
@@ -343,6 +342,10 @@ td {
     margin: auto;
     background-color: #ffffff33;
     font-weight: normal;
+}
+
+#tscen{
+    font-size: small;
 }
 
 .tidea, .bidea {
@@ -551,4 +554,37 @@ nav * {
                   -6px 6px 5px #ff5555,
                    6px -6px 5px #ff5555;
     }
+}
+
+#wordsearche {
+    min-width: 100%;
+    font-size: larger;
+    background-color: #cccccc99;
+    border-radius: 15px;
+    height: 1.5em;
+    border: none;
+    margin: 2px;
+    box-shadow: 1px -1px 6px #999;
+}
+#submitwordsearche {
+    position: relative;
+    margin: 0;
+    top: -2.2em;
+    right: -17em;
+    z-index: 10;
+    border: none;
+    padding: 0;
+    background: #eeeeee80;
+    box-shadow: none;
+    outline: none;
+    height: 2em;
+    width: 2em;
+    background-image: url(./imgs/search-circle-outline.svg);
+    border-radius: 10px;
+    text-decoration: none;
+    min-width: unset;
+}
+
+#online-header{
+    justify-content: space-between;
 }
