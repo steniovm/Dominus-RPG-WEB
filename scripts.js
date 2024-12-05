@@ -325,6 +325,52 @@ for (let i = 0; i < bideas.length; i++) {
     clearTimeout(timeoutnumber);
   });
 }
+//sorteia nova trama
+bdoccur.addEventListener("click", () => {
+  let result = roolDice();
+  addParag("Aconteceu: " + scenario.Occurrence[result - 1]);
+  showmessage("Aconteceu: " + scenario.Occurrence[result - 1]);
+  addRow();
+});
+bdneed.addEventListener("click", () => {
+  let result = roolDice();
+  addParag("Você precisa: " + scenario.Need[result - 1]);
+  showmessage("Você precisa: " + scenario.Need[result - 1]);
+  addRow();
+});
+bdother.addEventListener("click", () => {
+  let result = roolDice();
+  addParag("Senão: " + scenario.Otherwise[result - 1]);
+  showmessage("Senão: " + scenario.Otherwise[result - 1]);
+  addRow();
+});
+bdtram.addEventListener("click", () => {
+  let result = roolDice();
+  addParag(
+    "Aconteceu: " +
+      scenario.Occurrence[result - 1] +
+      ". Você precisa: " +
+      scenario.Need[result - 1] +
+      ". Senão: " +
+      scenario.Otherwise[result - 1]
+  );
+  showmessage(
+    "Aconteceu: " +
+      scenario.Occurrence[result - 1] +
+      ". Você precisa: " +
+      scenario.Need[result - 1] +
+      ". Senão: " +
+      scenario.Otherwise[result - 1]
+  );
+  addRow();
+});
+//sorteia novo arquetípo
+bdarch.addEventListener("click", () => {
+  let result = roolDice();
+  addParag("Arquétipo: " + scenario.Archetypes[result - 1]);
+  showmessage("Arquétipo: " + scenario.Archetypes[result - 1]);
+  addRow();
+});
 //rola dado avulso
 brools.addEventListener("click", () => {
   const dicevalue = roolDice();
