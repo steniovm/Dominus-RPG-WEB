@@ -29,12 +29,12 @@ formdata.addEventListener("submit", (ev) => {
   printobject(datasend);
   sendobject(datasend);
 });
-function submitform() {
+async function submitform() {
   const data = new FormData(formdata);
   const datasend = mountobject(data);
   console.log(datasend);
   printobject(datasend);
-  sendobject(datasend);
+  await sendobject(datasend);
 }
 function mountobject(data) {
   let datasend = {};
@@ -79,8 +79,8 @@ function mountobject(data) {
   delete datasend.OwnRuleNameDescription;
   return datasend;
 }
-function sendobject(object) {
-  fetch(urlbd, {
+async function sendobject(object) {
+  await fetch(urlbd, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -353,6 +353,34 @@ savelocal.addEventListener("click", () => {
   link.href = URL.createObjectURL(datafile);
   link.click();
 });
+saveonline.addEventListener("click", async () => {
+  const data = new FormData(formdata);
+  const datasend = mountobject(data);
+  let namefile = datasend.Name;
+  if (!namefile) {
+    alert("O cenário precisa ter um nome para ser salvo");
+    return;
+  }
+  await getrequest(urlbd + "?type=list", async function (data) {
+    const listnames = data.map((el) => el[1].toLowerCase());
+    if (listnames.includes(namefile.toLowerCase())) {
+      alert("Já exite um cenário no repositório com este nome");
+    } else {
+      await submitform();
+      await getrequest(urlbd + "?type=list", async function (dataf) {
+        const listnewnames = dataf.map((el) => el[1].toLowerCase());
+        if (listnewnames.includes(namefile.toLowerCase())) {
+          alert("Cenário " + namefile + " salvo no repositório com sucesso");
+        } else {
+          alert(
+            "Não foi possivel salvar o cenário no repositório\ntente novamente mais tarde"
+          );
+        }
+      });
+    }
+  });
+});
+
 opemfilelocal.addEventListener("click", () => {
   fileopem.click();
 });
