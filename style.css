@@ -570,7 +570,7 @@ nav * {
     position: relative;
     margin: 0;
     top: -2.2em;
-    right: -17em;
+    right: -15em;
     z-index: 10;
     border: none;
     padding: 0;
@@ -587,4 +587,15 @@ nav * {
 
 #online-header{
     justify-content: space-between;
+}
+
+#randomscen{
+    text-align: center;
+}
+
+#randomscen:hover{
+   background-color: #b7e9d8;
+}
+#randomscen:active{
+    box-shadow: inset black 1px 1px 1px;
 }

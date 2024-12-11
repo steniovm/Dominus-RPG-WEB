@@ -808,3 +808,9 @@ function filterList(word) {
     el.toString().toLowerCase().includes(word.toLowerCase())
   );
 }
+
+randomscen.addEventListener("click", () => {
+  const tscen = document.querySelectorAll("#tscen>tr");
+  const randnumber = Math.floor(Math.random() * tscen.length);
+  tscen[randnumber].click();
+});
