@@ -454,6 +454,9 @@ nav * {
     border: 2px groove #c0c0c0;
     border-radius: 5px;
     float: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .menu li {
@@ -464,7 +467,7 @@ nav * {
 .menu li a {
     color: #333;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 9px 4px;
     display: block;
 }
 
@@ -598,4 +601,56 @@ nav * {
 }
 #randomscen:active{
     box-shadow: inset black 1px 1px 1px;
+}
+#music-control {
+    border: #000 solid 1px;
+    border-radius: 12px;
+    width: 90px;
+    height: 35px;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.audiobtn {
+    background-color: transparent;
+    width: 16px;
+    height: 16px;
+}
+.audiobtn:hover {
+    background-color: #9999ff;
+}
+/*
+audio{
+    height: 16px;
+    width: 130px;
+}
+*/
+#mute-audio {
+    background-image: url("./imgs/mute-vol.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+}
+#down-audio {
+    background-image: url("./imgs/down-vol.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+}
+#up-audio {
+    background-image: url("./imgs/up-vol.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+}
+#max-audio {
+    background-image: url("./imgs/max-vol.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+}
+#audioselect{
+    min-width: 100%;
 }

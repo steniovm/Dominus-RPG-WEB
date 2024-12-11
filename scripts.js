@@ -24,8 +24,16 @@ const qualitylist = document.getElementsByClassName("tabletextidea4");
 const btclassfic = document.getElementsByClassName("btclassfic");
 const btup = document.getElementsByClassName("btup");
 const btdown = document.getElementsByClassName("btdown");
+const musiccontrol = document.querySelectorAll(".audiobtn");
 //variaveis e constantes globais
 const audiourl = "./songs/dado-rolando.mp3";
+const musicbk = new Audio();
+musicbk.loop = true;
+musicbk.volume = 0.1;
+const musiclist = [
+  ["sem audio", ""],
+  ["Alegre", "./songs/jigsaw-puzzle-background.mp3"],
+];
 const MAXROWS = 8;
 const TIMELIMIT = 60000;
 let scenario = {};
@@ -808,9 +816,47 @@ function filterList(word) {
     el.toString().toLowerCase().includes(word.toLowerCase())
   );
 }
-
+//sorteia cenário aleatóriamente (dentro dos filtrados se for o caso)
 randomscen.addEventListener("click", () => {
   const tscen = document.querySelectorAll("#tscen>tr");
   const randnumber = Math.floor(Math.random() * tscen.length);
   tscen[randnumber].click();
 });
+
+//inserir controle de som ambiente
+musiclist.forEach((el) => {
+  const opt = document.createElement("option");
+  opt.value = el[1];
+  opt.innerHTML = el[0];
+  audioselect.appendChild(opt);
+});
+audioselect.addEventListener("change", () => {
+  try {
+    if (audioselect.value) {
+      musicbk.src = audioselect.value;
+      musicbk.play();
+    } else {
+      musicbk.pause();
+    }
+    console.log(musicbk.src);
+  } catch (err) {
+    console.log(err);
+  }
+});
+musiccontrol[0].addEventListener("click", function () {
+  musicbk.volume = 0;
+});
+musiccontrol[1].addEventListener("click", function () {
+  if (musicbk.volume >= 0.1) {
+    musicbk.volume -= 0.1;
+  }
+});
+musiccontrol[2].addEventListener("click", function () {
+  if (musicbk.volume <= 0.9) {
+    musicbk.volume += 0.1;
+  }
+});
+musiccontrol[3].addEventListener("click", function () {
+  musicbk.volume = 1;
+});
+//inserir salvamento de opções no local storage (modo claro/escuro, som ambiente)
