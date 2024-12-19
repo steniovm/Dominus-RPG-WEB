@@ -671,6 +671,7 @@ function savejpeg() {
     historytext.scrollTop = historytext.scrollHeight;
   });
 }
+//faz requicisão get
 async function getrequest(url, funcAux) {
   timediv.classList.remove("hiddendiv");
   fetch(url)
