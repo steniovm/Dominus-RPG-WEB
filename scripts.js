@@ -33,6 +33,8 @@ musicbk.volume = 0.1;
 const musiclist = [
   ["sem audio", ""],
   ["Alegre", "./songs/jigsaw-puzzle-background.mp3"],
+  ["Calmo", "./songs/Gemini - The Soundlings.mp3"],
+  ["Sombrio", "./songs/Oasis dreams - Patrick Patrikios.mp3"],
 ];
 const MAXROWS = 8;
 const TIMELIMIT = 60000;
@@ -46,6 +48,7 @@ let urlbd =
   "https://script.google.com/macros/s/AKfycbwdokFRNJVbnq_-fH-6UB4XZqixeMn6AqYB7c3xSGR0-feAZCHu8_7W1ewcEwVKbK_Wbg/exec";
 //configura links do menu
 opemeditor.href = window.location.origin + "/scenariocreate.html";
+opemcatalog.href = window.location.origin + "/catalog.html";
 //redimensionamento de caixas de texto
 for (let i = 0; i < vinputs.length; i++) {
   vinputs[i].addEventListener("input", () => {
