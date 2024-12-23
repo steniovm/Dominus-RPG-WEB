@@ -1,0 +1,116 @@
+body,
+header,
+main,
+input,
+.submit-line {
+  max-width: unset;
+  width: 100%;
+  max-width: 1000px;
+  min-height: unset;
+}
+
+body {
+  padding: 15vh 0 0 0;
+}
+main {
+  margin: 40px 0 0 0;
+}
+
+th,
+td {
+  border: 0;
+}
+
+input[type="checkbox"] {
+  min-width: unset;
+  width: unset;
+}
+
+.miniimgs {
+  max-width: 100px;
+}
+
+table {
+  border-collapse: separate;
+}
+
+tr {
+  border: 2px groove #2b4a849c;
+  border-radius: 20px;
+  display: block;
+  margin: 2px 0;
+}
+
+th,
+td {
+  padding: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+td > span {
+  display: flex;
+  justify-content: end;
+  font-style: italic;
+  padding: 3px 0;
+}
+
+td > p {
+  padding: 3px 0;
+}
+
+.col0 {
+  width: 30px;
+  max-width: 30px;
+  border-radius: 20px 0 0 20px;
+}
+
+.col1 {
+  width: 100px;
+  max-width: 100px;
+}
+
+.col2 {
+  width: 870px;
+  max-width: 870px;
+  border-radius: 0 20px 20px 0;
+}
+
+.col12 {
+  width: 970px;
+  max-width: 970px;
+  border-radius: 0 20px 20px 0;
+}
+
+#btselectall {
+  cursor: pointer;
+}
+
+.arrowup,
+.arrowdown,
+.printbt {
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.arrowup {
+  background-image: url("imgs/toup.svg");
+}
+
+.arrowdown {
+  background-image: url("imgs/todown.svg");
+}
+
+.printbt {
+  background-image: url("imgs/printer.svg");
+}
+
+tfoot td {
+  width: 100%;
+}
+
+#lastupdatespan {
+  align-self: flex-end;
+}

@@ -35,6 +35,7 @@ const musiclist = [
   ["Alegre", "./songs/jigsaw-puzzle-background.mp3"],
   ["Calmo", "./songs/Gemini - The Soundlings.mp3"],
   ["Sombrio", "./songs/Oasis dreams - Patrick Patrikios.mp3"],
+  ["Animado", "./songs/Eclipse de Amor - Jovenes Viejos.mp3"],
 ];
 const MAXROWS = 8;
 const TIMELIMIT = 60000;

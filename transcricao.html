@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transcrição Contínua de Voz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      background: #f9f9f9;
+      min-height: 100px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Transcrição Contínua de Voz</h1>
+  <button id="start">Iniciar Transcrição</button>
+  <button id="stop" disabled>Parar Transcrição</button>
+  <div id="output">A transcrição aparecerá aqui...</div>
+
+  <script>
+    const startButton = document.getElementById('start');
+    const stopButton = document.getElementById('stop');
+    const output = document.getElementById('output');
+
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+
+      recognition.lang = 'pt-BR'; // Define o idioma para português
+      recognition.continuous = true; // Captura contínua (reiniciada no evento 'onend')
+      recognition.interimResults = false; // Exibe apenas resultados finais
+
+      let isListening = false;
+
+      const stopRecognition = () => {
+        if (isListening) {
+          recognition.stop();
+          isListening = false;
+          startButton.disabled = false;
+          stopButton.disabled = true;
+        }
+      };
+
+      const startRecognition = () => {
+        isListening = true;
+        recognition.start();
+        startButton.disabled = true;
+        stopButton.disabled = false;
+        output.textContent = 'Ouvindo...';
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = Array.from(event.results)
+          .map(result => result[0].transcript)
+          .join('\n');
+        output.textContent += `\n${transcript}`;
+      };
+
+      recognition.onerror = (event) => {
+        output.textContent += `\nErro: ${event.error}`;
+        stopRecognition();
+      };
+
+      recognition.onend = () => {
+        if (isListening) {
+          recognition.start(); // Reinicia automaticamente após o tempo limite da API
+        }
+      };
+
+      startButton.addEventListener('click', startRecognition);
+      stopButton.addEventListener('click', stopRecognition);
+    } else {
+      output.textContent = 'API de reconhecimento de voz não suportada neste navegador.';
+      startButton.disabled = true;
+    }
+  </script>
+</body>
+<!--
+Como funciona:
+O botão "Iniciar Transcrição" ativa o reconhecimento de fala.
+O texto transcrito é exibido em tempo real na área abaixo do botão.
+Inclui tratamento de erros caso a API não seja suportada ou algum problema ocorra.
+Instruções:
+Salve o código acima em um arquivo chamado index.html.
+Abra o arquivo em um navegador que suporte a API de reconhecimento de voz (como o Chrome).
+
+1. Tamanho Máximo de Cada Fala
+Limite de Duração: Geralmente, a API suporta falas de até 60 segundos em modo contínuo. Após isso, ela pode automaticamente parar de ouvir e precisar ser reiniciada.
+Transcrição em Modo Não Contínuo: Se continuous estiver desativado (como no exemplo), a transcrição será interrompida após uma pausa detectada na fala (alguns segundos de silêncio).
+Reinício Automático: Para capturar falas longas, é necessário implementar um mecanismo que reinicie a escuta automaticamente ao detectar que ela terminou.
+2. Velocidade da Fala
+Velocidade Normal: A API é otimizada para capturar fala natural, ou seja, a velocidade de uma conversa comum. Falar muito rápido pode reduzir a precisão.
+Pronúncia Clara: Palavras mal pronunciadas ou faladas muito rapidamente podem ser ignoradas ou transcritas de forma incorreta.
+Silêncios e Pausas: A API usa pausas como sinal para finalizar a captura de áudio, o que significa que falar devagar demais, com pausas muito longas, pode interromper a transcrição.
+3. Dependência de Conexão à Internet
+Processamento na Nuvem: A maioria das implementações dessa API depende de servidores na nuvem para realizar a transcrição, então uma conexão estável com a internet é necessária.
+Limitações de Dados: Se o áudio for muito longo ou a conexão instável, pode haver falhas ou atrasos na transcrição.
+4. Reconhecimento de Idiomas
+Idioma Configurado: É importante definir o idioma correto (por exemplo, pt-BR para português do Brasil). Se não configurado adequadamente, a transcrição pode ser imprecisa.
+Regionalismos e Gírias: Palavras regionais, sotaques fortes ou gírias podem não ser bem reconhecidos.
+5. Erros Comuns
+Interferência de Ruído: Áudio com muito ruído de fundo reduz a precisão. É recomendado usar a API em ambientes silenciosos.
+Reconhecimento Parcial: Se interimResults estiver ativado, a API pode fornecer resultados intermediários que não são finais, o que pode confundir o usuário.
+Erro de Recursos do Navegador: Em dispositivos mais antigos ou navegadores não atualizados, a API pode falhar ou não ser suportada.
+Melhorias Possíveis
+Fragmentação Automática: Implementar uma lógica que detecte o término da fala e reinicie automaticamente a escuta, permitindo falas mais longas.
+Filtragem de Resultados: Aplicar pós-processamento nos resultados para corrigir ou ajustar erros frequentes.
+Ambientes Barulhentos: Usar microfones com cancelamento de ruído para melhorar a qualidade do áudio.
+
+Modificações Principais
+Captura Contínua
+
+A propriedade recognition.continuous = true permite que a transcrição continue mesmo com pausas na fala.
+A lógica do evento onend reinicia automaticamente o reconhecimento caso ele termine inesperadamente.
+Interrupção Manual
+
+O reconhecimento só para quando o usuário clica no botão Parar Transcrição ou quando o tempo limite é atingido.
+Tempo Limite
+
+Adicionado um limite opcional (5 minutos no exemplo) com setTimeout. Isso ajuda a evitar consumo excessivo de recursos.
+Exibição de Resultados
+
+Agora, os resultados intermediários (interimResults) são exibidos para maior responsividade.
+Como Funciona Agora
+Clique em Iniciar Transcrição para começar.
+O sistema continuará ouvindo, mesmo com pausas, até que você clique em Parar Transcrição ou o tempo limite seja atingido.
+A transcrição será exibida em tempo real.
+
+Alterações Importantes
+Sem Tempo Limite Arbitrário
+
+O tempo máximo por fala é o limite natural da API (geralmente 60 segundos).
+Quando o limite é atingido, o evento onend reinicia automaticamente a escuta.
+Captura Contínua
+
+A propriedade recognition.continuous = true mantém a transcrição ativa enquanto o botão Parar Transcrição não for pressionado.
+Resultados são acumulados no output.
+Interrupção Manual
+
+A captura só é interrompida se o usuário pressionar Parar Transcrição.
+Como Funciona Agora
+O navegador captura continuamente a fala, reiniciando automaticamente após atingir o limite interno da API.
+Não há tempo arbitrário configurado; a aplicação respeita o limite natural da API.
+O botão Parar Transcrição encerra a captura manualmente.
+
+-->
+
+</html>
