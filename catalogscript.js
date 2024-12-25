@@ -50,6 +50,7 @@ function appendonline(scen, url) {
   printbt.classList.add("printbt");
   arrowup.classList.add("arrowup");
   ssmark.type = "checkbox";
+  ssmark.classList.add("censelected");
   arrowdown.classList.add("arrowdown");
   ssmark.value = ids;
   smark.appendChild(arrowup);
@@ -147,6 +148,55 @@ toupdate.addEventListener("click", () => {
     }
   }
 });
+//Baixar cenários selecionados
+togetonejson.addEventListener("click", async () => {
+  const selects = document.getElementsByClassName("censelected");
+  const cenarios = [];
+  let interval = 0;
+  for (let i = 0; i < selects.length; i++) {
+    if (selects[i].checked) {
+      if (allscens[selects[i].value]) {
+        cenarios.push(allscens[selects[i].value]);
+      } else {
+        cenarios.push({});
+        let posit = cenarios.length - 1;
+        getrequest(urlbd + "?type=scen&id=" + selects[i].value, (data) => {
+          allscens[selects[i].value] = data;
+          cenarios[posit] = allscens[selects[i].value];
+        });
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
+    }
+  }
+  interval = setInterval(() => {
+    let verif = true;
+    cenarios.forEach((el) => {
+      if (!Object.keys(el).length) {
+        verif = false;
+        timediv.classList.remove("hiddendiv");
+      }
+    });
+    if (verif) {
+      console.log(cenarios);
+      cenarios.forEach((data) => savescenario(data));
+      clearInterval(interval);
+      timediv.classList.add("hiddendiv");
+    }
+  }, 100);
+});
+//salvar cenário
+function savescenario(data) {
+  let link = document.createElement("a");
+  let datafile = new Blob([JSON.stringify(data, false, 1)]);
+  let namefile = data.Name + "-Dominus.json";
+  link.setAttribute("download", namefile);
+  link.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(datafile)
+  );
+  link.href = URL.createObjectURL(datafile);
+  link.click();
+}
 //modo escuro
 dlmode.addEventListener("click", () => {
   darkmode.disabled = !darkmode.disabled;
