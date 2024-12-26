@@ -3,7 +3,23 @@ let allscens = {};
 let urlbd =
   "https://script.google.com/macros/s/AKfycbwdokFRNJVbnq_-fH-6UB4XZqixeMn6AqYB7c3xSGR0-feAZCHu8_7W1ewcEwVKbK_Wbg/exec";
 //preenche tabelas ao carregar cenário
-function fillSheets() {}
+//function fillSheets() {}
+rowsscen.addEventListener("click", (ev) => {
+  const bt = ev.target;
+  const row = bt.closest("tr");
+  if (ev.target.classList.contains("arrowup")) {
+    const prevRow = row.previousElementSibling;
+    if (prevRow && prevRow.rowIndex !== 0) {
+      // Evita mover a linha para cima do cabeçalho
+      row.parentNode.insertBefore(row, prevRow);
+    }
+  } else if (ev.target.classList.contains("arrowdown")) {
+    const nextRow = row.nextElementSibling;
+    if (nextRow) {
+      row.parentNode.insertBefore(nextRow, row);
+    }
+  }
+});
 //solicita lista de cenários
 function listOnlineFiles() {
   rowsscen.innerHTML = "";
@@ -84,6 +100,7 @@ function appendonline(scen, url) {
   sline.appendChild(sinfos);
   rowsscen.appendChild(sline);
 }
+/*
 //ordena a lista de cenários
 function listSort(listonline, sort, desc) {
   if (sort > 0) {
@@ -107,6 +124,7 @@ function listSort(listonline, sort, desc) {
     appendonline(el);
   });
 }
+*/
 //faz requicisão get
 async function getrequest(url, funcAux) {
   timediv.classList.remove("hiddendiv");
