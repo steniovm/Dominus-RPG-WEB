@@ -82,7 +82,7 @@ td > p {
   border-radius: 0 20px 20px 0;
 }
 
-#btselectall {
+.col2 > #btselectall {
   cursor: pointer;
 }
 
@@ -93,8 +93,13 @@ td > p {
   height: 30px;
   background-size: contain;
   cursor: pointer;
+  min-width: unset;
+  background-color: transparent;
 }
-
+.col2 > h2 {
+  display: flex;
+  justify-content: space-evenly;
+}
 .arrowup {
   background-image: url("imgs/toup.svg");
 }
