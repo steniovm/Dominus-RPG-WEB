@@ -614,10 +614,15 @@ function creatfooter(cenar) {
     }<\spam><br />
     <spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
     <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
-    <spam><a href="${
-      cenar.textURL ? "Cenário original: " + cenar.textURL : ""
-    }">${cenar.textURL ? "Cenário original: " + cenar.textURL : ""}</a>
-    </spam>`;
+    <spam>${
+      cenar.textURL
+        ? 'Cenário original: <a href="' +
+          cenar.textURL +
+          '">' +
+          cenar.textURL +
+          "</a>"
+        : ""
+    }</spam>`;
   } else {
     return `<spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
     <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
