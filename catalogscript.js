@@ -231,7 +231,7 @@ function printsce(idcen) {
   }
 }
 async function printscen(cenar) {
-  //console.log(JSON.stringify(cenar, false, 1));
+  console.log(JSON.stringify(cenar, false, 1));
   let link = document.createElement("a");
   const cenhtml = htmlcreate(cenar);
   let text = new Blob([cenhtml], { type: "text/html" });
@@ -243,7 +243,6 @@ async function printscen(cenar) {
     "href",
     "data:text/plain;charset=utf-8," + encodeURIComponent(text)
   );
-  //link.href = URL.createObjectURL(text);
   let imp = window.open(
     URL.createObjectURL(text),
     "",
@@ -251,9 +250,7 @@ async function printscen(cenar) {
   );
   await new Promise((resolve) => setTimeout(resolve, 100));
   imp.print();
-  imp.close();
-  //console.log(cenhtml);
-  console.log(imp);
+  //imp.close();
 }
 function htmlcreate(cenar) {
   return `
