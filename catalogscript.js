@@ -566,8 +566,27 @@ function htmlcreate(cenar, unit = true) {
   ${prownrules(cenar.OwnRule)}
   ${unit ? "" : creatfooter(cenar)}
   </main>
-  <footer id="bkcover">
-    <fieldset id="rules" class="hiddendiv">
+  ${unit ? creatfooter(cenar) : creatfooter(false)}
+  </body>
+  </html>
+  `;
+}
+function basicrules() {
+  return ``;
+}
+function prownrules(OwnRule) {
+  let ruleshtml = '<div class="rule">';
+  OwnRule.forEach((el, ind) => {
+    ruleshtml += `<h3>Regra ${ind + 1}: ${el.Name}</h3>
+    <article>${el.description}</article>`;
+  });
+  ruleshtml += "</div>";
+  return ruleshtml;
+}
+function creatfooter(cenar) {
+  if (cenar) {
+    return `<footer id="bkcover">
+      <fieldset id="rules" class="hiddendiv">
       <h2>Regras do sistema Dominus</h2>
       <div class="rule">
         <h3>Regra 1: Preparação</h3>
@@ -590,36 +609,19 @@ function htmlcreate(cenar, unit = true) {
         <article>Sempre que precisar elaborar melhor um Lugar, Personagem ou Evento, role no Banco de Ideias e interprete o resultado de qualquer coluna de acordo com o Cenário.</article>
       </div>
     </fieldset>
-    ${unit ? creatfooter(cenar) : creatfooter(false)}
-  </footer>
-  </body>
-  </html>
-  `;
-}
-function prownrules(OwnRule) {
-  let ruleshtml = '<div class="rule">';
-  OwnRule.forEach((el, ind) => {
-    ruleshtml += `<h3>Regra ${ind + 1}: ${el.Name}</h3>
-    <article>${el.description}</article>`;
-  });
-  ruleshtml += "</div>";
-  return ruleshtml;
-}
-function creatfooter(cenar) {
-  if (cenar) {
-    return `<spam>${
+    <spam>${
       cenar.Author ? "Cenário criado por: " + cenar.Author : ""
     }<\spam><br />
     <spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
     <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
     <spam><a href="${
       cenar.textURL ? "Cenário original: " + cenar.textURL : ""
-    }">${cenar.textURL ? "Cenário original: " + cenar.textURL : ""}</a></spam>`;
+    }">${cenar.textURL ? "Cenário original: " + cenar.textURL : ""}</a>
+    </spam>`;
   } else {
     return `<spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
-    <spam>Fonte: <a href="${
-      window.location.href
-    }">Dominus Web</a></span><br />`;
+    <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
+    </footer>`;
   }
 }
 //modo escuro
