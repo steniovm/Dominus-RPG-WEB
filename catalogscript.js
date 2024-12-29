@@ -252,7 +252,7 @@ async function printscen(cenar) {
   imp.print();
   //imp.close();
 }
-function htmlcreate(cenar) {
+function htmlcreate(cenar, unit = true) {
   return `
   <!DOCTYPE html>
   <html lang="pt-br">
@@ -564,6 +564,7 @@ function htmlcreate(cenar) {
     </tr>
   </table>
   ${prownrules(cenar.OwnRule)}
+  ${unit ? "" : creatfooter(cenar)}
   </main>
   <footer id="bkcover">
     <fieldset id="rules" class="hiddendiv">
@@ -589,12 +590,7 @@ function htmlcreate(cenar) {
         <article>Sempre que precisar elaborar melhor um Lugar, Personagem ou Evento, role no Banco de Ideias e interprete o resultado de qualquer coluna de acordo com o Cenário.</article>
       </div>
     </fieldset>
-    <spam>${
-      cenar.Author ? "Cenário criado por: " + cenar.Author : ""
-    }<\spam><br />
-    <spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
-    <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
-    <spam>${cenar.textURL ? "Cenário original: " + cenar.textURL : ""}</spam>
+    ${unit ? creatfooter(cenar) : creatfooter(false)}
   </footer>
   </body>
   </html>
@@ -608,6 +604,23 @@ function prownrules(OwnRule) {
   });
   ruleshtml += "</div>";
   return ruleshtml;
+}
+function creatfooter(cenar) {
+  if (cenar) {
+    return `<spam>${
+      cenar.Author ? "Cenário criado por: " + cenar.Author : ""
+    }<\spam><br />
+    <spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
+    <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
+    <spam><a href="${
+      cenar.textURL ? "Cenário original: " + cenar.textURL : ""
+    }">${cenar.textURL ? "Cenário original: " + cenar.textURL : ""}</a></spam>`;
+  } else {
+    return `<spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
+    <spam>Fonte: <a href="${
+      window.location.href
+    }">Dominus Web</a></span><br />`;
+  }
 }
 //modo escuro
 dlmode.addEventListener("click", () => {
