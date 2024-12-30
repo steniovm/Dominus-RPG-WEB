@@ -266,7 +266,7 @@ function htmlcreate(cenar, unit = true) {
   <header>
     <h2>${cenar.Name}</h2>
     <strong class="scenarioauthor">${cenar.Author}</strong>
-    <imgsrc="${
+    <img src="${
       cenar.imgURL
         ? cenar.imgURL
         : "https://dominusrpg.vercel.app/dominusweb.png"
