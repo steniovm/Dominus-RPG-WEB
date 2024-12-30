@@ -148,6 +148,14 @@ async function getrequest(url, funcAux) {
       console.log("Fetch Error :-S", err);
     });
 }
+//mostrar about
+btshowabout.addEventListener("click", () => {
+  modalabout.classList.remove("hiddendiv");
+});
+//ocultar about
+closeaboutbt.addEventListener("click", () => {
+  modalabout.classList.add("hiddendiv");
+});
 //selecionar tudo
 btselectall.addEventListener("click", () => {
   const selects = document.querySelectorAll("input[type=checkbox]");

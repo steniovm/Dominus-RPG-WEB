@@ -119,3 +119,6 @@ tfoot td {
 #lastupdatespan {
   align-self: flex-end;
 }
+.modal {
+  background-color: #e26a42;
+}
