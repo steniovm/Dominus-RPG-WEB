@@ -253,130 +253,16 @@ async function printscen(cenar) {
   //imp.close();
 }
 function htmlcreate(cenar, unit = true) {
-  return `
-  <!DOCTYPE html>
-  <html lang="pt-br">
-    <head>
-      <meta charset="utf-8" />
-      <meta property="og:title" content="Dominus RPG Solo / ${
-        cenar.Name ? cenar.Name : ""
-      }" />
-      <meta property="og:description" content='História no cenário ${
-        cenar.Name ? cenar.Name : ""
-      } do RPG Solo  Dominus' />
-      <meta property="og:locale" content="pt-br" />
-      <meta property="description" content='História no cenário ${
-        cenar.Name ? cenar.Name : ""
-      } do RPG Solo  Dominus' />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      <title>${
-        cenar.Name ? cenar.Name : ""
-      } - Dominus - RPG Solo com Multiplos Cenários</title>
-      <style>
-    @font-face {
-      font-family: Lexend;
-      src: url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lexend:wght@100..900&family=Share+Tech&display=swap') format("truetype");
-    }
-
-    * {
-      color: ${cenar.TextColor ? cenar.TextColor : "black"};
-      font-family: Lexend, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: ${
-        cenar.BackgroundColor ? cenar.BackgroundColor : "white"
-      };
-      max-width: 800px;
-      margin: 0 2px;
-    }
-
-    header {
-      width: 100%;
-      min-width: 300px;
-      display: flex;
-      flex-direction: column;
-      break-after: page;
-    }
-
-    header * {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-    }
-
-    h2 {
-      margin: 5px 0;
-      font-size: xx-large;
-      font-weight: bold;
-    }
-
-    #scenarioauthor {
-      font-style: italic;
-      margin: 0 0 2px 0;
-    }
-
-    header>a {
-      flex-direction: column;
-    }
-
-    header img {
-      align-self: center;
-      height: auto;
-      width: auto;
-      max-height: 800px;
-    }
-
-    main {
-      break-after: page;
-    }
-
-    h3 {
-      margin: 0;
-      text-align: start;
-    }
-
-    p {
-      margin: 0;
-      text-align: justify;
-    }
-
-    table {
-      border-radius: 5px;
-      width: 100%;
-      border-collapse: collapse;
-      font-size: small;
-    }
-
-    .tablenumber {
-      font-weight: bold;
-    }
-
-    th,
-    td {
-      background-color: #dddddd66;
-      border: 1px #ddd solid;
-      padding: 1px 3px;
-    }
-
-    main .rule{
-      font-size: small;
-    }
-
-    fieldset {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 5px;
-    }
-
-    article {
-      text-align: justify;
-      margin: 0 0 5px 0;
-    }
-  </style>
-  </head>
-  <body>
+  return ` ${unit ? '<!DOCTYPE html><html lang="pt-br">' : ""}
+  ${
+    unit
+      ? creathead(cenar) + "<body>"
+      : '<div style="color:' +
+        (cenar.TextColor ? cenar.TextColor : "black") +
+        '; background-color:"' +
+        (cenar.BackgroundColor ? cenar.BackgroundColor : "white") +
+        ">"
+  }
   <header id="cover">
     <h2 id="scenarioname">${cenar.Name}</h2>
     <strong id="scenarioauthor">${cenar.Author}</strong>
@@ -567,12 +453,130 @@ function htmlcreate(cenar, unit = true) {
   ${unit ? "" : creatfooter(cenar)}
   </main>
   ${unit ? creatfooter(cenar) : creatfooter(false)}
-  </body>
-  </html>
+  ${unit ? "</body></html>" : "</div>"}
   `;
 }
-function basicrules() {
-  return ``;
+function creathead(cenar) {
+  return `<head>
+      <meta charset="utf-8" />
+      <meta property="og:title" content="Dominus RPG Solo / ${
+        cenar.Name ? cenar.Name : ""
+      }" />
+      <meta property="og:description" content='História no cenário ${
+        cenar.Name ? cenar.Name : ""
+      } do RPG Solo  Dominus' />
+      <meta property="og:locale" content="pt-br" />
+      <meta property="description" content='História no cenário ${
+        cenar.Name ? cenar.Name : ""
+      } do RPG Solo  Dominus' />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+      <title>${
+        cenar.Name ? cenar.Name : ""
+      } - Dominus - RPG Solo com Multiplos Cenários</title>
+      <style>
+    @font-face {
+      font-family: Lexend;
+      src: url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lexend:wght@100..900&family=Share+Tech&display=swap') format("truetype");
+    }
+
+    * {
+      color: ${cenar.TextColor ? cenar.TextColor : "black"};
+      font-family: Lexend, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: ${
+        cenar.BackgroundColor ? cenar.BackgroundColor : "white"
+      };
+      max-width: 800px;
+      margin: 0 2px;
+    }
+
+    header {
+      width: 100%;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      break-after: page;
+    }
+
+    header * {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+
+    h2 {
+      margin: 5px 0;
+      font-size: xx-large;
+      font-weight: bold;
+    }
+
+    #scenarioauthor {
+      font-style: italic;
+      margin: 0 0 2px 0;
+    }
+
+    header>a {
+      flex-direction: column;
+    }
+
+    header img {
+      align-self: center;
+      height: auto;
+      width: auto;
+      max-height: 800px;
+    }
+
+    main {
+      break-after: page;
+    }
+
+    h3 {
+      margin: 0;
+      text-align: start;
+    }
+
+    p {
+      margin: 0;
+      text-align: justify;
+    }
+
+    table {
+      border-radius: 5px;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: small;
+    }
+
+    .tablenumber {
+      font-weight: bold;
+    }
+
+    th,
+    td {
+      background-color: #dddddd66;
+      border: 1px #ddd solid;
+      padding: 1px 3px;
+    }
+
+    main .rule{
+      font-size: small;
+    }
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+    }
+
+    article {
+      text-align: justify;
+      margin: 0 0 5px 0;
+    }
+  </style>
+  </head>`;
 }
 function prownrules(OwnRule) {
   let ruleshtml = '<div class="rule">';
