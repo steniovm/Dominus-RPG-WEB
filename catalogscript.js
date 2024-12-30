@@ -263,21 +263,19 @@ function htmlcreate(cenar, unit = true) {
         (cenar.BackgroundColor ? cenar.BackgroundColor : "white") +
         ">"
   }
-  <header id="cover">
-    <h2 id="scenarioname">${cenar.Name}</h2>
-    <strong id="scenarioauthor">${cenar.Author}</strong>
-    <img id="scenarioimg" src="${
+  <header>
+    <h2>${cenar.Name}</h2>
+    <strong class="scenarioauthor">${cenar.Author}</strong>
+    <imgsrc="${
       cenar.imgURL
         ? cenar.imgURL
         : "https://dominusrpg.vercel.app/dominusweb.png"
     }" alt="Imagem do cenário ${cenar.Name}" />
-    <p id="scenariondesc">${
-      cenar.Ambiance ? cenar.Ambiance : "Um cénario Dominus Web"
-    }</p>
-    <spam id="scenariotags">${
+    <p>${cenar.Ambiance ? cenar.Ambiance : "Um cénario Dominus Web"}</p>
+    <spam>${
       cenar.Tags ? "Palavras-chaves: " + cenar.Tags.join(", ") : ""
     }</spam>
-    <spam id="scenarionotes">${cenar.OtherNotes}</spam>
+    <spam>${cenar.OtherNotes}</spam>
   </header>
   <main>
   <h3>Trama</h3>
@@ -512,7 +510,7 @@ function creathead(cenar) {
       font-weight: bold;
     }
 
-    #scenarioauthor {
+    .scenarioauthor {
       font-style: italic;
       margin: 0 0 2px 0;
     }
@@ -589,8 +587,8 @@ function prownrules(OwnRule) {
 }
 function creatfooter(cenar) {
   if (cenar) {
-    return `<footer id="bkcover">
-      <fieldset id="rules" class="hiddendiv">
+    return `<footer>
+      <fieldset class="hiddendiv">
       <h2>Regras do sistema Dominus</h2>
       <div class="rule">
         <h3>Regra 1: Preparação</h3>
