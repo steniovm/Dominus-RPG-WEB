@@ -170,40 +170,113 @@ toupdate.addEventListener("click", () => {
 });
 //Baixar cenários selecionados
 togetonejson.addEventListener("click", async () => {
-  const selects = document.getElementsByClassName("censelected");
-  const cenarios = [];
-  let interval = 0;
-  for (let i = 0; i < selects.length; i++) {
-    if (selects[i].checked) {
-      if (allscens[selects[i].value]) {
-        cenarios.push(allscens[selects[i].value]);
-      } else {
-        cenarios.push({});
-        let posit = cenarios.length - 1;
-        getrequest(urlbd + "?type=scen&id=" + selects[i].value, (data) => {
-          allscens[selects[i].value] = data;
-          cenarios[posit] = allscens[selects[i].value];
-        });
-        await new Promise((resolve) => setTimeout(resolve, 50));
+  const resp = confirm("Essa ação poderá levar vários minutos, tem certeza?");
+  if (resp) {
+    const selects = document.getElementsByClassName("censelected");
+    const cenarios = [];
+    let interval = 0;
+    for (let i = 0; i < selects.length; i++) {
+      if (selects[i].checked) {
+        if (allscens[selects[i].value]) {
+          cenarios.push(allscens[selects[i].value]);
+        } else {
+          cenarios.push({});
+          let posit = cenarios.length - 1;
+          getrequest(urlbd + "?type=scen&id=" + selects[i].value, (data) => {
+            allscens[selects[i].value] = data;
+            cenarios[posit] = allscens[selects[i].value];
+          });
+          await new Promise((resolve) => setTimeout(resolve, 50));
+        }
       }
     }
+    interval = setInterval(() => {
+      let verif = true;
+      cenarios.forEach((el) => {
+        if (!Object.keys(el).length) {
+          verif = false;
+          timediv.classList.remove("hiddendiv");
+        }
+      });
+      if (verif) {
+        console.log(cenarios);
+        cenarios.forEach((data) => savescenario(data));
+        clearInterval(interval);
+        timediv.classList.add("hiddendiv");
+      }
+    }, 100);
   }
-  interval = setInterval(() => {
-    let verif = true;
-    cenarios.forEach((el) => {
-      if (!Object.keys(el).length) {
-        verif = false;
-        timediv.classList.remove("hiddendiv");
-      }
-    });
-    if (verif) {
-      console.log(cenarios);
-      cenarios.forEach((data) => savescenario(data));
-      clearInterval(interval);
-      timediv.classList.add("hiddendiv");
-    }
-  }, 100);
 });
+//Imprimir cenários selecionados
+toprint.addEventListener("click", async () => {
+  const resp = confirm("Essa ação poderá levar vários minutos, tem certeza?");
+  if (resp) {
+    const cenlistinput = document.querySelectorAll('input[type="checkbox"]');
+    const cenlist = [];
+    //lista cenários demarcados
+    for (let i = 0; i < cenlistinput.length; i++) {
+      if (cenlistinput[i].checked) {
+        cenlist.push(cenlistinput[i].value);
+      }
+    }
+    //baixa cenários ainda não baixados
+    for (let i = 0; i < cenlist.length; i++) {
+      if (!allscens[cenlist[i]]) {
+        timediv.classList.remove("hiddendiv");
+        getrequest(urlbd + "?type=scen&id=" + cenlist[i], (data) => {
+          allscens[cenlist[i]] = data;
+          timediv.classList.add("hiddendiv");
+        });
+        await new Promise((resolve) => setTimeout(resolve, 100));
+      }
+    }
+    let interval = setInterval(() => {
+      let cc = true;
+      for (let i = 0; i < cenlist.length; i++) {
+        if (!allscens[cenlist[i]]) {
+          cc = false;
+        }
+      }
+      if (cc === true) {
+        printlist(cenlist);
+        clearInterval(interval);
+      }
+    }, 100);
+  }
+});
+// imprimir todos cenários
+function printlist(cenlist) {
+  //console.log(cenlist);
+  let stringscens = "";
+  cenlist.forEach((el) => {
+    stringscens += htmlcreate(allscens[el], false);
+  });
+  let htmlstring = `
+  <!DOCTYPE html>
+  <html lang="pt-br">
+  ${creathead()}
+  ${stringscens}
+  ${creatfooter({}, true)}
+  <body>
+  </body>
+  <script>window.print()</script>
+  </html>
+  `;
+  let link = document.createElement("a");
+  let text = new Blob([htmlstring], { type: "text/html" });
+  [htmlstring], { type: "text/plain: charset=utf-8" };
+  link.setAttribute("download", "CenaryColletion");
+  link.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+  );
+  let imp = window.open(
+    URL.createObjectURL(text),
+    "",
+    "popup," + "width=" + (window.innerWidth > 800 ? "800" : window.innerWidth)
+  );
+  //imp.print();
+}
 //salvar cenário
 function savescenario(data) {
   let link = document.createElement("a");
@@ -448,13 +521,13 @@ function htmlcreate(cenar, unit = true) {
     </tr>
   </table>
   ${prownrules(cenar.OwnRule)}
-  ${unit ? "" : creatfooter(cenar)}
+  ${unit ? "" : creatfooter(cenar, unit)}
   </main>
-  ${unit ? creatfooter(cenar) : creatfooter(false)}
+  ${unit ? creatfooter(cenar) : ""}
   ${unit ? "</body></html>" : "</div>"}
   `;
 }
-function creathead(cenar) {
+function creathead(cenar = {}) {
   return `<head>
       <meta charset="utf-8" />
       <meta property="og:title" content="Dominus RPG Solo / ${
@@ -523,7 +596,7 @@ function creathead(cenar) {
       align-self: center;
       height: auto;
       width: auto;
-      max-height: 800px;
+      max-height: 750px;
     }
 
     main {
@@ -585,8 +658,8 @@ function prownrules(OwnRule) {
   ruleshtml += "</div>";
   return ruleshtml;
 }
-function creatfooter(cenar) {
-  if (cenar) {
+function creatfooter(cenar = {}, unit = true) {
+  if (unit) {
     return `<footer>
       <fieldset class="hiddendiv">
       <h2>Regras do sistema Dominus</h2>
@@ -615,7 +688,20 @@ function creatfooter(cenar) {
       cenar.Author ? "Cenário criado por: " + cenar.Author : ""
     }<\spam><br />
     <spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
-    <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
+    ${
+      unit && cenar.textURL
+        ? '<spam>Cenário original: <a href="' +
+          cenar.textURL +
+          '">' +
+          cenar.textURL +
+          "</a></span><br />"
+        : ""
+    }
+    <spam>Fonte: <a href="${
+      window.location.href
+    }">Dominus Web</a></span><br />`;
+  } else {
+    return `<spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
     <spam>${
       cenar.textURL
         ? 'Cenário original: <a href="' +
@@ -624,10 +710,7 @@ function creatfooter(cenar) {
           cenar.textURL +
           "</a>"
         : ""
-    }</spam>`;
-  } else {
-    return `<spam>Data da versão: ${Date().toLocaleString()}</spam><br/>
-    <spam>Fonte: <a href="${window.location.href}">Dominus Web</a></span><br />
+    }</spam>
     </footer>`;
   }
 }
