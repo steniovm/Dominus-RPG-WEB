@@ -257,15 +257,16 @@ function printlist(cenlist) {
   //console.log(cenlist);
   let stringscens = "";
   cenlist.forEach((el) => {
-    stringscens += htmlcreate(allscens[el], false);
+    stringscens += htmlcreate(allscens[el], false, el);
   });
   let htmlstring = `
   <!DOCTYPE html>
   <html lang="pt-br">
   ${creathead()}
+  <body>
+  ${creatcover(cenlist)}
   ${stringscens}
   ${creatfooter({}, true)}
-  <body>
   </body>
   <script>window.print()</script>
   </html>
@@ -333,16 +334,18 @@ async function printscen(cenar) {
   imp.print();
   //imp.close();
 }
-function htmlcreate(cenar, unit = true) {
+function htmlcreate(cenar, unit = true, keyscen = false) {
   return ` ${unit ? '<!DOCTYPE html><html lang="pt-br">' : ""}
   ${
     unit
       ? creathead(cenar) + "<body>"
-      : '<div style="color:' +
+      : "<div " +
+        (keyscen ? "id=" + keyscen : "") +
+        ' style="color:' +
         (cenar.TextColor ? cenar.TextColor : "black") +
-        '; background-color:"' +
+        "; background-color:" +
         (cenar.BackgroundColor ? cenar.BackgroundColor : "white") +
-        ">"
+        ';">'
   }
   <header>
     <h2>${cenar.Name}</h2>
@@ -350,7 +353,7 @@ function htmlcreate(cenar, unit = true) {
     <img src="${
       cenar.imgURL
         ? cenar.imgURL
-        : "https://dominusrpg.vercel.app/dominusweb.png"
+        : "https://dominusrpg.vercel.app/imgs/dominusweb.png"
     }" alt="Imagem do cenário ${cenar.Name}" />
     <p>${cenar.Ambiance ? cenar.Ambiance : "Um cénario Dominus Web"}</p>
     <spam>${
@@ -550,8 +553,8 @@ function creathead(cenar = {}) {
       } do RPG Solo  Dominus' />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       <title>${
-        cenar.Name ? cenar.Name : ""
-      } - Dominus - RPG Solo com Multiplos Cenários</title>
+        cenar.Name ? cenar.Name + " - " : ""
+      } Dominus - RPG Solo com Multiplos Cenários</title>
       <style>
     @font-face {
       font-family: Lexend;
@@ -559,7 +562,7 @@ function creathead(cenar = {}) {
     }
 
     * {
-      color: ${cenar.TextColor ? cenar.TextColor : "black"};
+      ${cenar.TextColor ? "color: " + cenar.TextColor : ""};
       font-family: Lexend, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
@@ -605,6 +608,7 @@ function creathead(cenar = {}) {
       height: auto;
       width: auto;
       max-height: 750px;
+      max-width: 100%;
     }
 
     main {
@@ -653,6 +657,22 @@ function creathead(cenar = {}) {
     article {
       text-align: justify;
       margin: 0 0 5px 0;
+    }
+
+    #covercatalog {
+      max-height: 500px;
+      display: block;
+    }
+
+    #cenlistdiv {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: 450px;
+    }
+
+    #cenlistdiv>spam {
+      width: fit-content;
     }
   </style>
   </head>`;
@@ -721,6 +741,25 @@ function creatfooter(cenar = {}, unit = true) {
     }</spam>
     </footer>`;
   }
+}
+function creatcover(listscen) {
+  let listspams = "";
+  listscen.forEach((el) => {
+    listspams += `<spam><a href="#${el}">${allscens[el].Name}</a></spam>`;
+  });
+  return `
+<header>
+  <h2>Dominus Web</h2>
+  <strong class="scenarioauthor"><a href="https://dominusrpg.vercel.app">Dominus Web RPG</a></strong>
+  <img src="https://dominusrpg.vercel.app/imgs/dominusweb.png" alt="Imagem padrão do goblim mais Logo do Sistema Dominus" style="width: 400px;">
+  <fieldset id="covercatalog">
+    <h2>Índice de Cenários</h2>
+    <div id="cenlistdiv">
+      ${listspams}
+    </div>
+  </fieldset>
+</header>
+`;
 }
 //modo escuro
 dlmode.addEventListener("click", () => {
