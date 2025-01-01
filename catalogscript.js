@@ -562,7 +562,7 @@ function creathead(cenar = {}) {
     }
 
     * {
-      ${cenar.TextColor ? "color: " + cenar.TextColor : ""};
+      ${cenar.TextColor ? "color: " + cenar.TextColor + ";" : ""}
       font-family: Lexend, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
 
@@ -673,6 +673,14 @@ function creathead(cenar = {}) {
 
     #cenlistdiv>spam {
       width: fit-content;
+      max-width: 20%;
+    }
+
+    #cenlistdiv>spam>a {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   </style>
   </head>`;
