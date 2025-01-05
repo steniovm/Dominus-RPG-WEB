@@ -17,7 +17,7 @@ function initscens() {
         i = Math.floor(Math.random() * tempscens.length);
         tscen = allscens[tempscens[i]];
         creatrowscen(tempscens[i], tscen);
-        tempscens = tempscens.slice(i, i + 1);
+        tempscens = tempscens.toSpliced(i, 1);
         console.log(tempscens.length);
       }
     })
