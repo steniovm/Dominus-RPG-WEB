@@ -12,7 +12,6 @@ function initscens() {
       let tempscens = Object.keys(data);
       let i = Math.floor(Math.random() * tempscens.length);
       let tscen = allscens[tempscens[i]];
-      //console.log(tempscens);
       while (tempscens.length > 0) {
         i = Math.floor(Math.random() * tempscens.length);
         tscen = allscens[tempscens[i]];

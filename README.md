@@ -6,7 +6,7 @@
 <br>
 <p>É necessário ter cenários em formato JSOM para jogar, voce pode criar seus próprios cenários (utilizando o gerador de cenário scenariocreate.html), ou baixar os cenários publicos on-line no <a href="https://drive.google.com/drive/folders/1yCx5s9EAQGN5evy2Ff7jkSUi_O8VI71A?usp=sharing">repositório da aplicação</a>.
 <br>
-<a href="https://arquivorpg.com.br/dominus/"><img src="./imgs/logo-dominus.png"></a>
+<a href="https://arquivorpg.com.br/dominus/"><img src="./imgs/dominusweb.png"></a>
 <br><br>
 <span>Desenvolvido por: Stênio Vinicios de Medeiros</span>
 <span>Portifolio: <a href="https://steniovm.github.io/steniovm/" alt="Meu portifolio de projetos">https://steniovm.github.io/steniovm/</a></span>
@@ -17,6 +17,13 @@
 <span>O sistema Dominus RPG é de autoria anônima e encontra-se sob licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank">Creative Commons
 4.0</a></span>
 <img id="aboutcc" src="./imgs/CC-BY-180x65.jpg">
+<br><br>
+<h2>Acesse:</h2>
+<ul>
+<li>index.html: Página principal onde voce pode jogar seu cenário favorito.</li>
+<li>scenariocreate.html: Editor/criador de cenários, disponibilize seu proprio cenário para voce e/ou outros jogadores poderem jogar.</li>
+<li>catalog.html: catálogo de todos os cenários cadastrados na plataforma disponiveis para conhecer, baixar e imprimir.</li>
+</ul>
 <br><br>
 <span><a href="https://docs.google.com/document/d/1dpwhswNvg2cgHPJ-7bnlg43MF0mvACDjd4QmrBLjBI4/edit#heading=h.y1t6y85ts5ut" target="_blank">Obtenha o material original do sistema Dominus RPG</a></span>
 <p>A obra original foi criada pelo coletivo “Iniciativa Dominus”</p>
