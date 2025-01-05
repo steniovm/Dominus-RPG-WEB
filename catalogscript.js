@@ -10,10 +10,12 @@ function initscens() {
     resp.json().then((data) => {
       allscens = data;
       let tempscens = Object.keys(data);
-      console.log(tempscens.length);
+      let i = Math.floor(Math.random() * tempscens.length);
+      let tscen = allscens[tempscens[i]];
+      console.log(tempscens);
       while (tempscens.length > 0) {
-        const i = Math.floor(Math.random() * tempscens.length);
-        const tscen = allscens[tempscens[i]];
+        i = Math.floor(Math.random() * tempscens.length);
+        tscen = allscens[tempscens[i]];
         creatrowscen(tempscens[i], tscen);
         tempscens = tempscens.slice(i, i + 1);
         console.log(tempscens.length);
