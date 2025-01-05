@@ -3,6 +3,24 @@ let allscens = {};
 let urlbd =
   "https://script.google.com/macros/s/AKfycbwdokFRNJVbnq_-fH-6UB4XZqixeMn6AqYB7c3xSGR0-feAZCHu8_7W1ewcEwVKbK_Wbg/exec";
 //preenche tabelas ao carregar cenário
+//inicial
+initscens();
+function initscens() {
+  fetch("./scens.json").then((resp) =>
+    resp.json().then((data) => {
+      allscens = data;
+      let tempscens = Object.keys(data);
+      console.log(tempscens.length);
+      while (tempscens.length > 0) {
+        const i = Math.floor(Math.random() * tempscens.length);
+        const tscen = allscens[tempscens[i]];
+        creatrowscen(tempscens[i], tscen);
+        tempscens = tempscens.slice(i, i + 1);
+        console.log(tempscens.length);
+      }
+    })
+  );
+}
 //function fillSheets() {}
 rowsscen.addEventListener("click", (ev) => {
   const bt = ev.target;
@@ -43,8 +61,11 @@ async function listOnlineFilesAux(result) {
 }
 //adiciona cenário à tabela
 function appendonline(scen, url) {
-  ids = url.slice((urlbd + "?type=scen&id=").length);
+  const ids = url.slice((urlbd + "?type=scen&id=").length);
   allscens[ids] = scen;
+  creatrowscen(ids, scen);
+}
+function creatrowscen(ids, scen) {
   const sline = document.createElement("tr");
   sline.value = ids;
   sline.style = `color: ${scen.TextColor};background-color: ${scen.BackgroundColor};`;
