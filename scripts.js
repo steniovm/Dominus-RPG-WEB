@@ -389,13 +389,54 @@ brools.addEventListener("click", () => {
   showmessage("Rolagem: " + dicevalue);
   addRow();
 });
+brools4.addEventListener("click", () => {
+  const dicevalue = roolDice(4);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
+brools8.addEventListener("click", () => {
+  const dicevalue = roolDice(8);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
+brools10.addEventListener("click", () => {
+  const dicevalue = roolDice(10);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
+brools12.addEventListener("click", () => {
+  const dicevalue = roolDice(12);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
+brools20.addEventListener("click", () => {
+  const dicevalue = roolDice(20);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
+brools100.addEventListener("click", () => {
+  const dicevalue = roolDice(100);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
+broolsouther.addEventListener("click", () => {
+  const dicevalue = roolDice(inrools.value);
+  showmessage("Rolagem: " + dicevalue);
+  addRow();
+});
 //salva história em arquivo
 savehistory.addEventListener("click", savehtml);
 //rolagem de dados
 function roolDice(nf = 6, dicetwo = false) {
   let roll = Math.ceil(Math.random() * nf);
-  const diceimg = svglist[roll].cloneNode(true);
-  diceimg.classList.add("imgdice");
+  let diceimg = 0;
+  if (nf === 6) {
+    diceimg = svglist[roll].cloneNode(true);
+    diceimg.classList.add("imgdice");
+  } else {
+    diceimg = document.createElement("strong");
+    diceimg.innerHTML = "D" + nf + " -> " + roll + "  ";
+  }
   historytext.appendChild(diceimg);
   new Audio(audiourl).play();
   if (dicetwo) {
