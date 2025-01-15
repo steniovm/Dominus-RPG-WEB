@@ -480,49 +480,68 @@ function nextStep(hid, vis) {
 }
 
 // configurar o webkit de reconhecimento de fala
-window.SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-let recognition = new SpeechRecognition();
-recognition.interimResults = true;
-recognition.continuous = true;
-recognition.lang = "pt-BR";
-let textvoice = "";
-recognition.addEventListener("result", (e) => {
-  // mapeamento através da lista de fala para juntar palavras
-  const text = Array.from(e.results)
-    .map((result) => result[0])
-    .map((result) => result.transcript)
-    .join("");
-  textvoice = text;
-});
-//configura botões de escuta de fala
-for (let i = 0; i < voiceinputs.length; i++) {
-  voiceinputs[i].addEventListener("mousedown", (evt) => {
-    voiceinputs[i].classList.add("intebtpress");
+if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = "pt-BR"; // Define o idioma para português
+  recognition.continuous = true; // Captura contínua (reiniciada no evento 'onend')
+  recognition.interimResults = false; // Exibe apenas resultados finais
+  let isListening = false;
+  let output = undefined;
+  let bt = undefined;
+  function stopRecognition() {
+    if (isListening) {
+      recognition.stop();
+      isListening = false;
+      bt.classList.remove("intebtpress");
+    }
+  }
+  function startRecognition() {
+    isListening = true;
     recognition.start();
-  });
-  voiceinputs[i].addEventListener("touchstart", (evt) => {
-    evt.preventDefault();
-    voiceinputs[i].classList.add("intebtpress");
-    recognition.start();
-  });
-  voiceinputs[i].addEventListener("mouseup", (evt) => {
-    voiceinputs[i].classList.remove("intebtpress");
-    recognition.stop();
-    if (vinputs[i].value) vinputs[i].value += " ";
-    vinputs[i].value += textvoice;
-    resizetextbox(i);
-    textvoice = "";
-  });
-  voiceinputs[i].addEventListener("touchend", (evt) => {
-    evt.preventDefault();
-    voiceinputs[i].classList.remove("intebtpress");
-    recognition.stop();
-    if (vinputs[i].value) vinputs[i].value += " ";
-    vinputs[i].value += textvoice;
-    resizetextbox(i);
-    textvoice = "";
-  });
+    bt.classList.add("intebtpress");
+  }
+  recognition.onresult = (event) => {
+    const transcript = Array.from(event.results)
+      .map((result) => result[0].transcript)
+      .join("\n");
+    output.value = transcript;
+    stopRecognition();
+  };
+  recognition.onerror = (event) => {
+    output.value += ` Erro: ${event.error}`;
+    stopRecognition();
+  };
+  recognition.onend = () => {
+    if (isListening) {
+      recognition.start(); // Reinicia automaticamente após o tempo limite da API
+    }
+  };
+
+  //configura botões de escuta de fala
+  for (let i = 0; i < voiceinputs.length; i++) {
+    voiceinputs[i].addEventListener("mousedown", (evt) => {
+      output = vinputs[i];
+      bt = voiceinputs[i];
+      startRecognition();
+    });
+    voiceinputs[i].addEventListener("touchstart", (evt) => {
+      evt.preventDefault();
+      output = vinputs[i];
+      bt = voiceinputs[i];
+      startRecognition();
+    });
+    voiceinputs[i].addEventListener("mouseup", (evt) => {
+      stopRecognition();
+      resizetextbox(i);
+    });
+    voiceinputs[i].addEventListener("touchend", (evt) => {
+      evt.preventDefault();
+      stopRecognition();
+      resizetextbox(i);
+    });
+  }
 }
 
 // configuração de modal
