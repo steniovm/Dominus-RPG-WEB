@@ -36,6 +36,15 @@ const musiclist = [
   ["Calmo", "./songs/Gemini - The Soundlings.mp3"],
   ["Sombrio", "./songs/Oasis dreams - Patrick Patrikios.mp3"],
   ["Animado", "./songs/Eclipse de Amor - Jovenes Viejos.mp3"],
+  ["Eletronico", "./songs/Sly Sky - Telecasted.mp3"],
+  ["Descolado", ".songs/Seagull - Telecasted.mp3"],
+  ["Dramatico", "./songs/Nature Nurture - Quincas Moreira.mp3"],
+  ["Baile", "./songs/A Baroque Letter - Aaron Kenny.mp3"],
+  ["Trama", "./songs/Bourree - Joel Cummins.mp3"],
+  ["Batalha", "./songs/Chariots of War - Aakash Gandhi.mp3"],
+  ["Castelo", "./songs/Invitation to the Castle Ball - Doug Maxwell.mp3"],
+  ["Vilarejo", "./songs/Folk Round - Kevin MacLeod.mp3"],
+  ["Floresta", "./songs/Renaissance - Audionautix.mp3"],
 ];
 const MAXROWS = 8;
 const TIMELIMIT = 60000;
