@@ -107,7 +107,7 @@ function creatrowscen(ids, scen) {
   sinfos.appendChild(sambiance);
   sskeys.innerHTML = "Palavras-chave: ";
   skeys.appendChild(sskeys);
-  ssskeys.innerHTML = scen.Tags.join(", ");
+  if (Array.isArray(scen.Tags)) ssskeys.innerHTML = scen.Tags.join(", ");
   skeys.appendChild(ssskeys);
   sinfos.appendChild(skeys);
   ssnotes.innerHTML = "Notas: ";
@@ -378,7 +378,10 @@ function htmlcreate(cenar, unit = true, keyscen = false) {
     }" alt="Imagem do cenário ${cenar.Name}" />
     <p>${cenar.Ambiance ? cenar.Ambiance : "Um cénario Dominus Web"}</p>
     <spam>${
-      cenar.Tags ? "Palavras-chaves: " + cenar.Tags.join(", ") : ""
+      cenar.Tags
+        ? "Palavras-chaves: " +
+          (Array.isArray(cenar.Tags) ? cenar.Tags.join(", ") : "")
+        : ""
     }</spam>
     <spam>${cenar.OtherNotes}</spam>
   </header>
